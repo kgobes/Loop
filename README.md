@@ -1,2 +1,2 @@
-# BLECoffeeTemperatureSwift
-Bluetooth Low Energy Coffee Surface Temperature Reader in Swift!
+First version of Loop app to connect via Bluetooth to Flora Arduino chip 
+Based on a temperature control tutorial for connection
