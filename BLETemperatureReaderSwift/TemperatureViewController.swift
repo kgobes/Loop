@@ -449,7 +449,9 @@ class TemperatureViewController: UIViewController, CBCentralManagerDelegate, CBP
                 // If we found either the temperature or the humidity service, discover the characteristics for those services.
                 if (service.uuid == CBUUID(string: Device.TemperatureServiceUUID)) ||
                     (service.uuid == CBUUID(string: Device.HumidityServiceUUID)) {
+                    print("MATCHED EXPECTED SERVICE UUID")
                     peripheral.discoverCharacteristics(nil, for: service)
+    
                 }
             }
         }
