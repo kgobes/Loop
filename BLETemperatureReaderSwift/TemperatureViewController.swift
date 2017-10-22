@@ -107,8 +107,7 @@ class TemperatureViewController: UIViewController, CBCentralManagerDelegate, CBP
             disconnect()
         }
     }
-    
-    func disconnect() {
+        func disconnect() {
         if let sensorTag = self.sensorTag {
             if let tc = self.temperatureCharacteristic {
                 sensorTag.setNotifyValue(false, for: tc)
@@ -374,9 +373,11 @@ class TemperatureViewController: UIViewController, CBCentralManagerDelegate, CBP
     */
     func centralManager(_ central: CBCentralManager, didConnect peripheral: CBPeripheral) {
         print("**** SUCCESSFULLY CONNECTED TO SENSOR TAG!!!")
+        
     
         temperatureLabel.font = UIFont(name: temperatureLabelFontName, size: temperatureLabelFontSizeMessage)
         temperatureLabel.text = "Connected to bracelet!"
+        
         
         // Now that we've successfully connected to the SensorTag, let's discover the services.
         // - NOTE:  we pass nil here to request ALL services be discovered.
@@ -474,15 +475,42 @@ class TemperatureViewController: UIViewController, CBCentralManagerDelegate, CBP
         }
         
         if let characteristics = service.characteristics {
-            var enableValue:UInt8 = 1
-           // let enableBytes = Data(bytes: UnsafePointer<UInt8>(&enableValue), count: sizeof(UInt8))
-            let enableBytes = withUnsafePointer(to: &enableValue){
+          //  var enableValue:UInt8 = 1
+            //var color: NSString = "FF0000"
+            let color = "FFFFFFFF0000"
+            let nsColor = color as NSString
+            let colorData = nsColor.data(using: String.Encoding.utf8.rawValue)!
+            
+            //var enableValue:UInt8 = 'FF0000'
+          /*  let enableBytes = withUnsafePointer(to: &enableValue){
                 return Data(bytes: $0, count: MemoryLayout<UInt8>.size)
-            }
+            }*/
             for characteristic in characteristics {
+                sensorTag?.writeValue(colorData, for: characteristic, type: .withResponse)
+                // Matches UUID characteristic
+                if characteristic.uuid == CBUUID(string: Device.TemperatureDataUUID) {
+                    // Enable the IR Temperature Sensor notifications
+                    print("AYYY MATCHING char ID")
+                    temperatureCharacteristic = characteristic
+                    sensorTag?.setNotifyValue(true, for: characteristic)
+                }
+                
+                // Temperature Configuration Characteristic
+                if characteristic.uuid == CBUUID(string: Device.TemperatureConfig) {
+                    // Enable IR Temperature Sensor
+                    print("Matching characteristic round 2")
+                    sensorTag?.writeValue(colorData, for: characteristic, type: .withResponse)
+                    print("after send");
+                    //sensorTag?.writeValue(enableBytes, for: characteristic, type: .withResponse)
+                }
+                
+            }
+            /*COMMENTED OUT AND COPIED OVER TO EDIT
+             for characteristic in characteristics {
                 // Temperature Data Characteristic
                 if characteristic.uuid == CBUUID(string: Device.TemperatureDataUUID) {
                     // Enable the IR Temperature Sensor notifications
+                    print("AYYY MATCHING char ID")
                     temperatureCharacteristic = characteristic
                     sensorTag?.setNotifyValue(true, for: characteristic)
                 }
@@ -503,7 +531,7 @@ class TemperatureViewController: UIViewController, CBCentralManagerDelegate, CBP
                     // Enable Humidity Temperature Sensor
                     sensorTag?.writeValue(enableBytes, for: characteristic, type: .withResponse)
                 }
-            }
+            }*/
         }
     }
     
@@ -558,5 +586,4 @@ class TemperatureViewController: UIViewController, CBCentralManagerDelegate, CBP
         let temp = -46.85 + 175.72/65536 * Double(rawT);
         return temp;
     }
-    
-}
+    }

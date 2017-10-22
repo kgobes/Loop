@@ -48,8 +48,10 @@ struct Device {
     
     static let TemperatureServiceUUID = "00771312-1100-0000-0000-ABBA0FA1AFE1" //first one in list from atcommand output
     
-    static let TemperatureDataUUID = "F000AA01-0451-4000-B000-000000000000"
-    static let TemperatureConfig = "F000AA02-0451-4000-B000-000000000000"
+    //static let TemperatureDataUUID = "00684201-1488-5977-4242-ABBA0FA1AFE1"//second one in list
+    
+    static let TemperatureDataUUID = "0x1702a2460"
+    static let TemperatureConfig =   "00694203-0077-1210-1342-ABBA0FA1AFE1" //third- maybe write?
     
     static let HumidityServiceUUID = "F000AA20-0451-4000-B000-000000000000"
     static let HumidityDataUUID = "F000AA21-0451-4000-B000-000000000000"
