@@ -476,8 +476,8 @@ class TemperatureViewController: UIViewController, CBCentralManagerDelegate, CBP
         }
         
         if let characteristics = service.characteristics {
-            var enableValue:UInt8 = 1
-          var color: NSString = "FF0000"
+            var enableValue:UInt8 = 2
+          let color: NSString = "FF0000"
          //  let color = "FFFFFFFF0000"
            let nsColor = color as NSString
            let colorData = nsColor.data(using: String.Encoding.utf8.rawValue)!
@@ -496,6 +496,7 @@ class TemperatureViewController: UIViewController, CBCentralManagerDelegate, CBP
                     print("AYYY MATCHING char ID")
                     temperatureCharacteristic = characteristic
                     sensorTag?.setNotifyValue(true, for: characteristic)
+                    sensorTag?.writeValue(colorData, for: characteristic, type: .withResponse)
                 }
                 
                 // Temperature Configuration Characteristic
@@ -504,7 +505,7 @@ class TemperatureViewController: UIViewController, CBCentralManagerDelegate, CBP
                     print("Matching characteristic round 2")
                    sensorTag?.writeValue(colorData, for: characteristic, type: .withResponse)
                     print("after send");
-                    sensorTag?.writeValue(enableBytes as Data, for: characteristic, type: .withResponse)
+                   // sensorTag?.writeValue(enableBytes as Data, for: characteristic, type: .withResponse)
                 }
                 
             }
