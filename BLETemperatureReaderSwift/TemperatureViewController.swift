@@ -341,7 +341,8 @@ class TemperatureViewController: UIViewController, CBCentralManagerDelegate, CBP
 
      */
     func centralManager(_ central: CBCentralManager, didDiscover peripheral: CBPeripheral, advertisementData: [String : Any], rssi RSSI: NSNumber) {
-        print("centralManager didDiscoverPeripheral - CBAdvertisementDataLocalNameKey is \"\(CBAdvertisementDataLocalNameKey)\"")
+        //commenting out annoying print line
+        //print("centralManager didDiscoverPeripheral - CBAdvertisementDataLocalNameKey is \"\(CBAdvertisementDataLocalNameKey)\"")
 
         // Retrieve the peripheral name from the advertisement data using the "kCBAdvDataLocalName" key
         if let peripheralName = advertisementData[CBAdvertisementDataLocalNameKey] as? String {
@@ -475,18 +476,20 @@ class TemperatureViewController: UIViewController, CBCentralManagerDelegate, CBP
         }
         
         if let characteristics = service.characteristics {
-          //  var enableValue:UInt8 = 1
-            //var color: NSString = "FF0000"
-            let color = "FFFFFFFF0000"
-            let nsColor = color as NSString
-            let colorData = nsColor.data(using: String.Encoding.utf8.rawValue)!
+            var enableValue:UInt8 = 1
+          var color: NSString = "FF0000"
+         //  let color = "FFFFFFFF0000"
+           let nsColor = color as NSString
+           let colorData = nsColor.data(using: String.Encoding.utf8.rawValue)!
             
             //var enableValue:UInt8 = 'FF0000'
-          /*  let enableBytes = withUnsafePointer(to: &enableValue){
-                return Data(bytes: $0, count: MemoryLayout<UInt8>.size)
-            }*/
+            let enableBytes = NSData(bytes: &enableValue, length: MemoryLayout<UInt8>.size)
+           //let enableBytes = withUnsafePointer(to: &enableValue){
+            //    return Data(bytes: $0, count: MemoryLayout<UInt8>.size)
+           // }
             for characteristic in characteristics {
-                sensorTag?.writeValue(colorData, for: characteristic, type: .withResponse)
+                print("checking characteristics")
+                //sensorTag?.writeValue(colorData, for: characteristic, type: .withResponse)
                 // Matches UUID characteristic
                 if characteristic.uuid == CBUUID(string: Device.TemperatureDataUUID) {
                     // Enable the IR Temperature Sensor notifications
@@ -499,9 +502,9 @@ class TemperatureViewController: UIViewController, CBCentralManagerDelegate, CBP
                 if characteristic.uuid == CBUUID(string: Device.TemperatureConfig) {
                     // Enable IR Temperature Sensor
                     print("Matching characteristic round 2")
-                    sensorTag?.writeValue(colorData, for: characteristic, type: .withResponse)
+                   sensorTag?.writeValue(colorData, for: characteristic, type: .withResponse)
                     print("after send");
-                    //sensorTag?.writeValue(enableBytes, for: characteristic, type: .withResponse)
+                    sensorTag?.writeValue(enableBytes as Data, for: characteristic, type: .withResponse)
                 }
                 
             }
