@@ -476,17 +476,17 @@ class TemperatureViewController: UIViewController, CBCentralManagerDelegate, CBP
         }
         
         if let characteristics = service.characteristics {
-            var enableValue:UInt8 = 2
-          let color: NSString = "FF0000"
+            var enableValue:UInt8 = 1
+          let color: NSString = "0000FF"
          //  let color = "FFFFFFFF0000"
            let nsColor = color as NSString
            let colorData = nsColor.data(using: String.Encoding.utf8.rawValue)!
             
-            //var enableValue:UInt8 = 'FF0000'
-            let enableBytes = NSData(bytes: &enableValue, length: MemoryLayout<UInt8>.size)
-           //let enableBytes = withUnsafePointer(to: &enableValue){
-            //    return Data(bytes: $0, count: MemoryLayout<UInt8>.size)
-           // }
+          //  var enableValue:UInt8 = 'FF0000'
+           //old version of bytes-- let enableBytes = NSData(bytes: &enableValue, length: MemoryLayout<UInt8>.size)
+           let enableBytes = withUnsafePointer(to: &enableValue){
+                return Data(bytes: $0, count: MemoryLayout<UInt8>.size)
+           }
             for characteristic in characteristics {
                 print("checking characteristics")
                 //sensorTag?.writeValue(colorData, for: characteristic, type: .withResponse)
@@ -496,16 +496,18 @@ class TemperatureViewController: UIViewController, CBCentralManagerDelegate, CBP
                     print("AYYY MATCHING char ID")
                     temperatureCharacteristic = characteristic
                     sensorTag?.setNotifyValue(true, for: characteristic)
-                    sensorTag?.writeValue(colorData, for: characteristic, type: .withResponse)
+                   // sensorTag?.writeValue(colorData, for: characteristic, type: .withResponse)
+                    print("after set notify value");
                 }
                 
                 // Temperature Configuration Characteristic
                 if characteristic.uuid == CBUUID(string: Device.TemperatureConfig) {
                     // Enable IR Temperature Sensor
                     print("Matching characteristic round 2")
-                   sensorTag?.writeValue(colorData, for: characteristic, type: .withResponse)
-                    print("after send");
-                   // sensorTag?.writeValue(enableBytes as Data, for: characteristic, type: .withResponse)
+                   //sensorTag?.writeValue(colorData, for: characteristic, type: .withResponse)
+                   // print("after send");
+                    sensorTag?.writeValue(enableBytes as Data, for: characteristic, type: .withResponse)
+                    print("after send bytes");
                 }
                 
             }
