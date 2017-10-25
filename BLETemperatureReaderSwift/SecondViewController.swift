@@ -42,6 +42,7 @@ class SecondViewController: UIViewController, CBCentralManagerDelegate, CBPeriph
     var lastHumidity:Double = -9999
     var circleDrawn = false
     var keepScanning = false
+    var enableValue:UInt8 = 2
     //var isScanning = false
     
     // Core Bluetooth properties
@@ -464,11 +465,11 @@ class SecondViewController: UIViewController, CBCentralManagerDelegate, CBPeriph
         }
         
         if let characteristics = service.characteristics {
-            var enableValue:UInt8 = 1
-            let color: NSString = "0000FF"
+            //var enableValue:UInt8 = 1
+            //let color: NSString = "0000FF"
             //  let color = "FFFFFFFF0000"
-            let nsColor = color as NSString
-            let colorData = nsColor.data(using: String.Encoding.utf8.rawValue)!
+           // let nsColor = color as NSString
+            //let colorData = nsColor.data(using: String.Encoding.utf8.rawValue)!
             
             //  var enableValue:UInt8 = 'FF0000'
             //old version of bytes-- let enableBytes = NSData(bytes: &enableValue, length: MemoryLayout<UInt8>.size)
@@ -499,33 +500,7 @@ class SecondViewController: UIViewController, CBCentralManagerDelegate, CBPeriph
                 }
                 
             }
-            /*COMMENTED OUT AND COPIED OVER TO EDIT
-             for characteristic in characteristics {
-             // Temperature Data Characteristic
-             if characteristic.uuid == CBUUID(string: Device.TemperatureDataUUID) {
-             // Enable the IR Temperature Sensor notifications
-             print("AYYY MATCHING char ID")
-             temperatureCharacteristic = characteristic
-             sensorTag?.setNotifyValue(true, for: characteristic)
-             }
-             
-             // Temperature Configuration Characteristic
-             if characteristic.uuid == CBUUID(string: Device.TemperatureConfig) {
-             // Enable IR Temperature Sensor
-             sensorTag?.writeValue(enableBytes, for: characteristic, type: .withResponse)
-             }
-             
-             if characteristic.uuid == CBUUID(string: Device.HumidityDataUUID) {
-             // Enable Humidity Sensor notifications
-             humidityCharacteristic = characteristic
-             sensorTag?.setNotifyValue(true, for: characteristic)
-             }
-             
-             if characteristic.uuid == CBUUID(string: Device.HumidityConfig) {
-             // Enable Humidity Temperature Sensor
-             sensorTag?.writeValue(enableBytes, for: characteristic, type: .withResponse)
-             }
-             }*/
+          
         }
     }
     
@@ -559,12 +534,21 @@ class SecondViewController: UIViewController, CBCentralManagerDelegate, CBPeriph
     
     // Below are the functions of changing color
     @IBAction func changeLEDToRed(_ sender: UIButton) {
+        enableValue = 1
+        print("change color to 1");
+        sensorTag?.discoverServices(nil)
     }
     
     @IBAction func changeLEDToBlue(_ sender: UIButton) {
+         enableValue = 2
+         print("change color to 2");
+        sensorTag?.discoverServices(nil)
     }
     
     @IBAction func changeLEDToGreen(_ sender: UIButton) {
+        enableValue = 3
+         print("change color to 3");
+        sensorTag?.discoverServices(nil)
     }
     
     // MARK: - TI Sensor Tag Utility Methods

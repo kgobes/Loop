@@ -35,7 +35,7 @@
             BlueprintIdentifier = "C80679BB1CB9B7ED009BCB93"
             BuildableName = "BLETemperatureReaderSwift.app"
             BlueprintName = "BLETemperatureReaderSwift"
-            ReferencedContainer = "container:BLETemperatureReaderSwift.xcodeproj">
+            ReferencedContainer = "container:BLETemperatureReaderSwift I have no idea whether it will work.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
       <AdditionalOptions>
@@ -58,7 +58,7 @@
             BlueprintIdentifier = "C80679BB1CB9B7ED009BCB93"
             BuildableName = "BLETemperatureReaderSwift.app"
             BlueprintName = "BLETemperatureReaderSwift"
-            ReferencedContainer = "container:BLETemperatureReaderSwift.xcodeproj">
+            ReferencedContainer = "container:BLETemperatureReaderSwift I have no idea whether it will work.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
       <AdditionalOptions>
