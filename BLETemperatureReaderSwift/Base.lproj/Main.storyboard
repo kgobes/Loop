@@ -94,6 +94,9 @@
                                 <state key="normal" title="Red">
                                     <color key="titleColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
+                                <connections>
+                                    <action selector="changeLEDToRed:" destination="Msk-UT-8UQ" eventType="touchUpInside" id="BFU-Cg-2ff"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="l3J-xt-WwG">
                                 <rect key="frame" x="151" y="248" width="72" height="85"/>
@@ -102,12 +105,18 @@
                                     <constraint firstAttribute="height" constant="85" id="TzR-9I-eaX"/>
                                 </constraints>
                                 <state key="normal" title="Blue"/>
+                                <connections>
+                                    <action selector="changeLEDToBlue:" destination="Msk-UT-8UQ" eventType="touchUpInside" id="NYe-cK-BXK"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qWm-Sz-lJF">
                                 <rect key="frame" x="265" y="248" width="72" height="85"/>
                                 <state key="normal" title="Green">
                                     <color key="titleColor" red="0.0" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
+                                <connections>
+                                    <action selector="changeLEDToGreen:" destination="Msk-UT-8UQ" eventType="touchUpInside" id="B1J-la-q0i"/>
+                                </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Connect Text" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="20" translatesAutoresizingMaskIntoConstraints="NO" id="vdu-Yn-O4c">
                                 <rect key="frame" x="33" y="46" width="308" height="67"/>
@@ -140,6 +149,9 @@
                     </view>
                     <navigationItem key="navigationItem" id="XnP-ez-Hs0"/>
                     <connections>
+                        <outlet property="changeColorToBlue" destination="l3J-xt-WwG" id="Lmj-pc-Mt4"/>
+                        <outlet property="changeColorToGreen" destination="qWm-Sz-lJF" id="RFr-TR-Bw3"/>
+                        <outlet property="changeColorToRed" destination="D6T-Hs-srx" id="X2q-RT-cVb"/>
                         <outlet property="disconnectButton" destination="5aL-bk-0lH" id="KOd-ob-ebe"/>
                         <outlet property="temperatureLabel" destination="vdu-Yn-O4c" id="b8o-96-54Z"/>
                     </connections>

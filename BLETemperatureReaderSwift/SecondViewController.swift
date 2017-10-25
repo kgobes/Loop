@@ -14,14 +14,16 @@ class SecondViewController: UIViewController, CBCentralManagerDelegate, CBPeriph
     
     
     
-  //  @IBOutlet weak var temperatureLabel: UILabel!
-    @IBOutlet weak var temperatureLabel: UILabel!
-    
-    
 
+    @IBOutlet weak var temperatureLabel: UILabel!
     @IBOutlet weak var disconnectButton: UIButton!
-//    @IBOutlet weak var START: UIButton!
+   
+    //Connect 3 change color button
+    @IBOutlet weak var changeColorToRed: UIButton!
     
+    @IBOutlet weak var changeColorToBlue: UIButton!
+    
+    @IBOutlet weak var changeColorToGreen: UIButton!
     // define our scanning interval times
     let timerPauseInterval:TimeInterval = 10.0
     let timerScanInterval:TimeInterval = 2.0
@@ -232,21 +234,16 @@ class SecondViewController: UIViewController, CBCentralManagerDelegate, CBPeriph
         //            print("next int: \(nextInt)")
         //        }
         
-        let rawAmbientTemp:UInt16 = dataArray[Device.SensorDataIndexTempAmbient]
-        let ambientTempC = Double(rawAmbientTemp) / 128.0
-        let ambientTempF = convertCelciusToFahrenheit(ambientTempC)
-        print("*** AMBIENT TEMPERATURE SENSOR (C/F): \(ambientTempC), \(ambientTempF)");
+
+        
+       // let ambientTempF = convertCelciusToFahrenheit(ambientTempC)
+       // print("*** AMBIENT TEMPERATURE SENSOR (C/F): \(ambientTempC), \(ambientTempF)");
         
         // Device also retrieves an infrared temperature sensor value, which we don't use in this demo.
         // However, for instructional purposes, here's how to get at it to compare to the ambient temperature:
-        let rawInfraredTemp:UInt16 = dataArray[Device.SensorDataIndexTempInfrared]
-        let infraredTempC = Double(rawInfraredTemp) / 128.0
-        let infraredTempF = convertCelciusToFahrenheit(infraredTempC)
-        print("*** INFRARED TEMPERATURE SENSOR (C/F): \(infraredTempC), \(infraredTempF)");
-        
-        let temp = Int(ambientTempF)
-        lastTemperature = temp
-        print("*** LAST TEMPERATURE CAPTURED: \(lastTemperature)° F")
+
+   
+
         
         if UIApplication.shared.applicationState == .active {
             updateTemperatureDisplay()
@@ -263,18 +260,10 @@ class SecondViewController: UIViewController, CBCentralManagerDelegate, CBPeriph
             print("next int: \(nextInt)")
         }
         
-        let rawHumidity:UInt16 = dataArray[Device.SensorDataIndexHumidity]
-        let calculatedHumidity = calculateRelativeHumidity(rawHumidity)
-        print("*** HUMIDITY: \(calculatedHumidity)");
-        //humidityLabel.text = String(format: "Humidity: %.01f%%", calculatedHumidity)
-        //  humidityLabel.isHidden = false
-        
-        // Humidity sensor also retrieves a temperature, which we don't use.
-        // However, for instructional purposes, here's how to get at it to compare to the ambient sensor:
-        let rawHumidityTemp:UInt16 = dataArray[Device.SensorDataIndexHumidityTemp]
-        let calculatedTemperatureC = calculateHumidityTemperature(rawHumidityTemp)
-        let calculatedTemperatureF = convertCelciusToFahrenheit(calculatedTemperatureC)
-        print("*** HUMIDITY TEMP C: \(calculatedTemperatureC) F: \(calculatedTemperatureF)")
+       // let rawHumidity:UInt16 = dataArray[Device.SensorDataIndexHumidity]
+
+      //  let rawHumidityTemp:UInt16 = dataArray[Device.SensorDataIndexHumidityTemp]
+
         
     }
     
@@ -568,29 +557,19 @@ class SecondViewController: UIViewController, CBCentralManagerDelegate, CBPeriph
         }
     }
     
+    // Below are the functions of changing color
+    @IBAction func changeLEDToRed(_ sender: UIButton) {
+    }
+    
+    @IBAction func changeLEDToBlue(_ sender: UIButton) {
+    }
+    
+    @IBAction func changeLEDToGreen(_ sender: UIButton) {
+    }
     
     // MARK: - TI Sensor Tag Utility Methods
+
     
-    func convertCelciusToFahrenheit(_ celcius:Double) -> Double {
-        let fahrenheit = (celcius * 1.8) + Double(32)
-        return fahrenheit
-    }
-    
-    func calculateRelativeHumidity(_ rawH:UInt16) -> Double {
-        // clear status bits [1..0]
-        let clearedH = rawH & ~0x003
-        
-        //-- calculate relative humidity [%RH] --
-        // RH= -6 + 125 * SRH/2^16
-        let relativeHumidity:Double = -6.0 + 125.0/65536 * Double(clearedH)
-        return relativeHumidity
-    }
-    
-    func calculateHumidityTemperature(_ rawT:UInt16) -> Double {
-        //-- calculate temperature [deg C] --
-        let temp = -46.85 + 175.72/65536 * Double(rawT);
-        return temp;
-    }
 }
 
 
