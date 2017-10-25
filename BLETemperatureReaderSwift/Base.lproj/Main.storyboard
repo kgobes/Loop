@@ -29,7 +29,8 @@
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2wR-g6-yPG">
                                 <rect key="frame" x="16" y="386" width="343" height="155"/>
-                                <color key="backgroundColor" red="0.83347830728413164" green="0.97680455446243286" blue="0.89186750902752321" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="backgroundColor" red="0.90573826717132422" green="0.92749813648282842" blue="0.97680455446243286" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="24"/>
                                 <state key="normal" title="Connect to Bluetooth">
                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
@@ -80,37 +81,45 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="8qI-HX-BUg">
-                                <rect key="frame" x="171" y="248" width="42" height="130"/>
+                                <rect key="frame" x="150" y="248" width="72" height="148"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="249" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="D6T-Hs-srx">
-                                        <rect key="frame" x="0.0" y="0.0" width="42" height="30"/>
-                                        <color key="backgroundColor" red="0.83347830730000005" green="0.97680455450000003" blue="0.891867509" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="72" height="36"/>
+                                        <color key="backgroundColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
                                         <state key="normal" title="Red">
-                                            <color key="titleColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
                                         <connections>
                                             <action selector="changeLEDToRed:" destination="Msk-UT-8UQ" eventType="touchUpInside" id="BFU-Cg-2ff"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" verticalCompressionResistancePriority="752" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="l3J-xt-WwG">
-                                        <rect key="frame" x="0.0" y="50" width="42" height="30"/>
-                                        <color key="backgroundColor" red="0.83347830730000005" green="0.97680455450000003" blue="0.891867509" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        <state key="normal" title="Blue"/>
+                                        <rect key="frame" x="0.0" y="56" width="72" height="36"/>
+                                        <color key="backgroundColor" red="0.022206698080605252" green="0.29766918903079975" blue="0.97680455450000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
+                                        <state key="normal" title="Blue">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
                                         <connections>
                                             <action selector="changeLEDToBlue:" destination="Msk-UT-8UQ" eventType="touchUpInside" id="NYe-cK-BXK"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qWm-Sz-lJF">
-                                        <rect key="frame" x="0.0" y="100" width="42" height="30"/>
-                                        <color key="backgroundColor" red="0.83347830730000005" green="0.97680455450000003" blue="0.891867509" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <rect key="frame" x="0.0" y="112" width="72" height="36"/>
+                                        <color key="backgroundColor" red="0.0" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
                                         <state key="normal" title="Green">
-                                            <color key="titleColor" red="0.0" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
                                         <connections>
                                             <action selector="changeLEDToGreen:" destination="Msk-UT-8UQ" eventType="touchUpInside" id="B1J-la-q0i"/>
                                         </connections>
                                     </button>
                                 </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="72" id="9SR-FG-gST"/>
+                                </constraints>
                             </stackView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Connect Text" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="20" translatesAutoresizingMaskIntoConstraints="NO" id="vdu-Yn-O4c">
                                 <rect key="frame" x="33" y="46" width="309" height="66"/>
@@ -119,10 +128,13 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5aL-bk-0lH">
-                                <rect key="frame" x="98" y="546" width="180" height="101"/>
+                                <rect key="frame" x="77" y="546" width="220" height="101"/>
+                                <color key="backgroundColor" red="0.97680455446243286" green="0.78399278926844118" blue="0.76664590036901492" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="101" id="yW8-2k-tuu"/>
+                                    <constraint firstAttribute="width" constant="220" id="iCd-ek-NSQ"/>
+                                    <constraint firstAttribute="height" constant="101" id="rcB-8Q-bvb"/>
                                 </constraints>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
                                 <state key="normal" title="Disconnect Bluetooth">
                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
@@ -134,18 +146,17 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="5aL-bk-0lH" firstAttribute="leading" secondItem="OLC-lH-23R" secondAttribute="leadingMargin" constant="82" id="DzA-ut-ovt"/>
-                            <constraint firstAttribute="bottom" secondItem="5aL-bk-0lH" secondAttribute="bottom" constant="20" symbolic="YES" id="E5p-DH-Hvo"/>
-                            <constraint firstItem="V5t-au-b5g" firstAttribute="centerX" secondItem="5aL-bk-0lH" secondAttribute="centerX" id="ExD-2u-8QB"/>
+                            <constraint firstItem="5aL-bk-0lH" firstAttribute="centerX" secondItem="V5t-au-b5g" secondAttribute="centerX" id="5bI-Yu-mpc"/>
                             <constraint firstItem="vdu-Yn-O4c" firstAttribute="leading" secondItem="OLC-lH-23R" secondAttribute="leadingMargin" constant="17" id="GsU-t6-mmS"/>
+                            <constraint firstItem="8qI-HX-BUg" firstAttribute="top" secondItem="V5t-au-b5g" secondAttribute="bottom" constant="20" id="Hw1-Gf-eHw"/>
                             <constraint firstItem="V5t-au-b5g" firstAttribute="centerX" secondItem="vdu-Yn-O4c" secondAttribute="centerX" id="KmG-50-qKl"/>
                             <constraint firstItem="V5t-au-b5g" firstAttribute="top" secondItem="OLC-lH-23R" secondAttribute="top" constant="192" id="Mv7-FY-3hh"/>
+                            <constraint firstItem="8qI-HX-BUg" firstAttribute="leading" secondItem="OLC-lH-23R" secondAttribute="leading" constant="150" id="XLb-wv-PYL"/>
                             <constraint firstItem="V5t-au-b5g" firstAttribute="leading" secondItem="OLC-lH-23R" secondAttribute="leadingMargin" id="dwq-9T-el7"/>
                             <constraint firstItem="V5t-au-b5g" firstAttribute="trailing" secondItem="OLC-lH-23R" secondAttribute="trailingMargin" id="fWX-Ul-FED"/>
-                            <constraint firstItem="8qI-HX-BUg" firstAttribute="top" secondItem="V5t-au-b5g" secondAttribute="bottom" constant="20" id="ilw-yy-QXW"/>
+                            <constraint firstItem="VyU-vd-c94" firstAttribute="top" secondItem="5aL-bk-0lH" secondAttribute="bottom" constant="20" id="hCm-FA-yMe"/>
                             <constraint firstItem="vdu-Yn-O4c" firstAttribute="top" secondItem="O7S-ua-4pb" secondAttribute="bottom" constant="26" id="j2W-dy-rAc"/>
                             <constraint firstItem="V5t-au-b5g" firstAttribute="top" secondItem="vdu-Yn-O4c" secondAttribute="bottom" constant="80" id="qxO-ku-FeX"/>
-                            <constraint firstItem="8qI-HX-BUg" firstAttribute="leading" secondItem="OLC-lH-23R" secondAttribute="leading" constant="171" id="tCN-9P-8g9"/>
                             <constraint firstAttribute="trailingMargin" secondItem="vdu-Yn-O4c" secondAttribute="trailing" constant="17" id="yuO-Zy-LxQ"/>
                         </constraints>
                     </view>
@@ -160,7 +171,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qTx-Bi-1EB" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2702.898550724638" y="446.73913043478262"/>
+            <point key="canvasLocation" x="1782" y="447"/>
         </scene>
     </scenes>
     <resources>
