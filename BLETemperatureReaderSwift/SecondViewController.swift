@@ -49,6 +49,8 @@ class SecondViewController: UIViewController, CBCentralManagerDelegate, CBPeriph
     // (Probably a good idea to do that if you're using a different model of
     // the SensorTag, or if you don't know what model it is...)
     let sensorTagName = "Adafruit Bluefruit LE"
+    
+    let trinketID = "Adafruit Bluefruit LE F68E"
     //NEW 10/17
     
 //    @IBAction func clickSTART(_ sender: Any) {
@@ -167,16 +169,7 @@ class SecondViewController: UIViewController, CBCentralManagerDelegate, CBPeriph
         temperatureLabel.text = " \(lastTemperature)°"
     }
     
-    //    func drawCircle() {
-    //        circleView.isHidden = false
-    //        let circleLayer = CAShapeLayer()
-    //        circleLayer.path = UIBezierPath(ovalIn: CGRect(x: 0, y: 0, width: circleView.frame.width, height: circleView.frame.height)).cgPath
-    //        circleView.layer.addSublayer(circleLayer)
-    //        circleLayer.lineWidth = 2
-    //        circleLayer.strokeColor = UIColor.white.cgColor
-    //        circleLayer.fillColor = UIColor.clear.cgColor
-    //        circleDrawn = true
-    //    }
+
     
     func tensValue(_ temperature:Int) -> Int {
         var temperatureTens = 10;
@@ -190,31 +183,7 @@ class SecondViewController: UIViewController, CBCentralManagerDelegate, CBPeriph
         return temperatureTens
     }
     
-    //    func updateBackgroundImageForTemperature(_ temperature:Int) {
-    //        let temperatureTens = tensValue(temperature)
-    //        if temperatureTens != lastTemperatureTens {
-    //            // generate file name of new background to show
-    //            let temperatureFilename = "temp-\(temperatureTens)"
-    //            print("*** BACKGROUND FILENAME: \(temperatureFilename)")
-    //
-    //            // fade out old background, fade in new.
-    ////            let visibleBackground = backgroundImageViews[visibleBackgroundIndex]
-    ////            let invisibleBackground = backgroundImageViews[invisibleBackgroundIndex]
-    ////            invisibleBackground.image = UIImage(named: temperatureFilename)
-    ////            invisibleBackground.alpha = 0
-    ////            view.bringSubview(toFront: invisibleBackground)
-    //       //     view.bringSubview(toFront: controlContainerView)
-    //            UIView.animate(withDuration: 0.5, animations: {
-    //                    invisibleBackground.alpha = 1;
-    //                }, completion: { (finished) in
-    //                    visibleBackground.alpha = 0
-    //                    let indexTemp = self.visibleBackgroundIndex
-    //                    self.visibleBackgroundIndex = self.invisibleBackgroundIndex
-    //                    self.invisibleBackgroundIndex = indexTemp
-    //                    print("**** NEW INDICES - visible: \(self.visibleBackgroundIndex) - invisible: \(self.invisibleBackgroundIndex)")
-    //            })
-    //        }
-    //    }
+
     
     func displayTemperature(_ data:Data) {
         // We'll get four bytes of data back, so we divide the byte count by two
@@ -326,14 +295,16 @@ class SecondViewController: UIViewController, CBCentralManagerDelegate, CBPeriph
     func centralManager(_ central: CBCentralManager, didDiscover peripheral: CBPeripheral, advertisementData: [String : Any], rssi RSSI: NSNumber) {
         //commenting out annoying print line
         //print("centralManager didDiscoverPeripheral - CBAdvertisementDataLocalNameKey is \"\(CBAdvertisementDataLocalNameKey)\"")
-        
+        var foundMyBracelet = false
         // Retrieve the peripheral name from the advertisement data using the "kCBAdvDataLocalName" key
         if let peripheralName = advertisementData[CBAdvertisementDataLocalNameKey] as? String {
             print("NEXT PERIPHERAL NAME: \(peripheralName)")
             print("NEXT PERIPHERAL UUID: \(peripheral.identifier.uuidString)")
             
             if peripheralName == sensorTagName {
-                print("SENSOR TAG FOUND! ADDING NOW!!!")
+                foundMyBracelet = true
+                //pauseScan()
+                print("Found bracelet. ")
                 // to save power, stop scanning for other devices
                 keepScanning = false
                 disconnectButton.isEnabled = true
@@ -344,6 +315,10 @@ class SecondViewController: UIViewController, CBCentralManagerDelegate, CBPeriph
                 
                 // Request a connection to the peripheral
                 centralManager.connect(sensorTag!, options: nil)
+            }
+            if peripheralName == trinketID {
+                print("found trinket")
+                nearTrinket()
             }
         }
     }
@@ -459,31 +434,22 @@ class SecondViewController: UIViewController, CBCentralManagerDelegate, CBPeriph
         }
         
         if let characteristics = service.characteristics {
-            //var enableValue:UInt8 = 1
-            //let color: NSString = "0000FF"
-            //  let color = "FFFFFFFF0000"
-           // let nsColor = color as NSString
-            //let colorData = nsColor.data(using: String.Encoding.utf8.rawValue)!
-            
-            //  var enableValue:UInt8 = 'FF0000'
-            //old version of bytes-- let enableBytes = NSData(bytes: &enableValue, length: MemoryLayout<UInt8>.size)
-            let enableBytes = withUnsafePointer(to: &enableValue){
+            let enableBytes = withUnsafePointer(to: &enableValue){ //did this to convert in xcode9
                 return Data(bytes: $0, count: MemoryLayout<UInt8>.size)
             }
             for characteristic in characteristics {
                 print("checking characteristics")
-                //sensorTag?.writeValue(colorData, for: characteristic, type: .withResponse)
                 // Matches UUID characteristic
                 if characteristic.uuid == CBUUID(string: Device.TemperatureDataUUID) {
                     // Enable the IR Temperature Sensor notifications
-                    print("AYYY MATCHING char ID")
+                    print("Matching characteristic ID")
                     temperatureCharacteristic = characteristic
                     sensorTag?.setNotifyValue(true, for: characteristic)
                     // sensorTag?.writeValue(colorData, for: characteristic, type: .withResponse)
                     print("after set notify value");
                 }
                 
-                // Temperature Configuration Characteristic
+                // LED Configuration Characteristic
                 if characteristic.uuid == CBUUID(string: Device.TemperatureConfig) {
                     // Enable IR Temperature Sensor
                     print("Matching characteristic round 2")
@@ -542,6 +508,12 @@ class SecondViewController: UIViewController, CBCentralManagerDelegate, CBPeriph
     @IBAction func changeLEDToGreen(_ sender: UIButton) {
         enableValue = 3
          print("change color to 3");
+        sensorTag?.discoverServices(nil)
+    }
+    
+    func nearTrinket(){
+        enableValue = 4
+        print("going to change color for detected friend")
         sensorTag?.discoverServices(nil)
     }
     
