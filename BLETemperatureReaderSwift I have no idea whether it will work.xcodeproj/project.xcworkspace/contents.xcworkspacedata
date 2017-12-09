@@ -2,6 +2,6 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "absolute:/Users/evanstone/Projects/Cloud City/ZeroToBLE/ZeroToBLE-Part2/BLETemperatureReaderSwift/BLETemperatureReaderSwift.xcodeproj">
+      location = "absolute:/Users/evanstone/Projects/Cloud City/ZeroToBLE/ZeroToBLE-Part2/BLETemperatureReaderSwift/LoopApp.xcodeproj">
    </FileRef>
 </Workspace>

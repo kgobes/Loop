@@ -1,10 +1,3 @@
-//
-//  SecondViewController.swift
-//  BLETemperatureReaderSwift
-//
-//  Created by 钟佳耘 on 10/24/17.
-//  Copyright © 2017 Cloud City. All rights reserved.
-//
 
 import UIKit
 import CoreBluetooth

@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="16G29" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="Msk-UT-8UQ">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -15,53 +15,6 @@
         </array>
     </customFonts>
     <scenes>
-        <!--Temperature View Controller-->
-        <scene sceneID="tne-QT-ifu">
-            <objects>
-                <viewController id="BYZ-38-t0r" customClass="TemperatureViewController" customModule="BLETemperatureReaderSwift" customModuleProvider="target" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
-                        <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2wR-g6-yPG">
-                                <rect key="frame" x="16" y="386" width="343" height="155"/>
-                                <color key="backgroundColor" red="0.90573826717132422" green="0.92749813648282842" blue="0.97680455446243286" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="24"/>
-                                <state key="normal" title="Connect to Bluetooth">
-                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                </state>
-                                <connections>
-                                    <segue destination="Msk-UT-8UQ" kind="show" id="OJ3-5f-AaC"/>
-                                </connections>
-                            </button>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="LoopLogo" translatesAutoresizingMaskIntoConstraints="NO" id="WM2-3O-GEE">
-                                <rect key="frame" x="67" y="86" width="240" height="240"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="240" id="53C-91-LJS"/>
-                                    <constraint firstAttribute="height" constant="240" id="Jaw-Wg-AQ8"/>
-                                </constraints>
-                            </imageView>
-                        </subviews>
-                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                        <constraints>
-                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="2wR-g6-yPG" secondAttribute="bottom" constant="126" id="1y3-CO-liP"/>
-                            <constraint firstItem="WM2-3O-GEE" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="66" id="CU0-dL-Nx5"/>
-                            <constraint firstItem="WM2-3O-GEE" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="51" id="Tiq-3f-27i"/>
-                            <constraint firstItem="2wR-g6-yPG" firstAttribute="centerX" secondItem="WM2-3O-GEE" secondAttribute="centerX" id="btN-vb-Y1N"/>
-                            <constraint firstItem="2wR-g6-yPG" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="vf2-iC-Bn1"/>
-                            <constraint firstItem="2wR-g6-yPG" firstAttribute="top" secondItem="WM2-3O-GEE" secondAttribute="bottom" constant="60" id="x1N-dD-w4h"/>
-                        </constraints>
-                    </view>
-                    <navigationItem key="navigationItem" id="Mrb-Eo-VhB"/>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1031.2" y="446.62668665667172"/>
-        </scene>
         <!--Second View Controller-->
         <scene sceneID="Da4-AF-bSw">
             <objects>
@@ -140,7 +93,6 @@
                                 </state>
                                 <connections>
                                     <action selector="handleDisconnectButtonTapped:" destination="Msk-UT-8UQ" eventType="touchUpInside" id="tBM-hU-a0r"/>
-                                    <segue destination="BYZ-38-t0r" kind="show" id="y1Q-kA-o69"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -174,7 +126,4 @@
             <point key="canvasLocation" x="1782" y="447"/>
         </scene>
     </scenes>
-    <resources>
-        <image name="LoopLogo" width="1642" height="1738"/>
-    </resources>
 </document>

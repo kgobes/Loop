@@ -1,10 +1,4 @@
-//
-//  TemperatureViewController.swift
-//  iOSRemoteConfBLEDemo
-//
-//  Created by Evan Stone on 4/9/16.
-//  Copyright © 2016 Cloud City. All rights reserved.
-//
+
 
 import UIKit
 import CoreBluetooth
@@ -136,7 +130,7 @@ class SecondViewController: UIViewController, CBCentralManagerDelegate, CBPeriph
     
     // MARK: - Bluetooth scanning
     
-    func pauseScan() {
+    @objc func pauseScan() {
         // Scanning uses up battery on phone, so pause the scan process for the designated interval.
         print("*** PAUSING SCAN...")
         _ = Timer(timeInterval: timerPauseInterval, target: self, selector: #selector(resumeScan), userInfo: nil, repeats: false)
@@ -144,7 +138,7 @@ class SecondViewController: UIViewController, CBCentralManagerDelegate, CBPeriph
         disconnectButton.isEnabled = true
     }
     
-    func resumeScan() {
+    @objc func resumeScan() {
         if keepScanning {
             // Start scanning again...
             print("*** RESUMING SCAN!")
