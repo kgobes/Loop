@@ -492,6 +492,13 @@ class SecondViewController: UIViewController, CBCentralManagerDelegate, CBPeriph
         print("going to change color for detected friend")
         sensorTag?.discoverServices(nil)
     }
+    func nearFriendAdded(ifNearBlock: NameText){
+        if(ifNearBlock.text == "If meet Michelle"){
+            print("near Michelle added")
+        }
+        print("friend block added")
+        
+    }
     
     // MARK: - TI Sensor Tag Utility Methods
 }

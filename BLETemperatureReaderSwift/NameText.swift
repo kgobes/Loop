@@ -8,9 +8,12 @@
 
 import UIKit
 
-class NameText: UITextView {
+class NameText: UITextView, UITextViewDelegate {
+     //@IBOutlet weak var exampleTextView: UITextView!
+    
     override init(frame: CGRect,textContainer: NSTextContainer?){
         super.init(frame: frame, textContainer: textContainer)
+      //  self.exampleTextView.delegate = self
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -22,7 +25,14 @@ class NameText: UITextView {
         let touch = touches.first
         self.center = touch!.location(in: self.superview)
     }
-
+    
+  /*  func textViewDidBeginEditing(_ textView: UITextView) {
+        print("exampleTextView: BEGIN EDIT")
+    }
+    
+    func textViewDidEndEditing(_ textView: UITextView) {
+        print("exampleTextView: END EDIT")
+    }*/
     /*
     // Only override draw() if you perform custom drawing.
     // An empty implementation adversely affects performance during animation.

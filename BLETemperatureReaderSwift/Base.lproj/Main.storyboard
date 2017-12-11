@@ -150,6 +150,7 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Meet a friend"/>
                                 <connections>
+                                    <action selector="nearFriendButtonEdit:" destination="8UD-Yk-Jsg" eventType="editingDidEnd" id="Vvy-zP-8q4"/>
                                     <action selector="objectAddedWithTheButton:" destination="8UD-Yk-Jsg" eventType="touchUpInside" id="IVf-mh-hlf"/>
                                 </connections>
                             </button>
@@ -172,6 +173,9 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </view>
+                    <connections>
+                        <outlet property="nearFriendButton" destination="VcM-hT-hEy" id="Usx-L9-lpL"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="TQf-jb-WwJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
