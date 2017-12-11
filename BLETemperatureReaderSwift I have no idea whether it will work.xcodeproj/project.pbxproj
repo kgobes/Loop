@@ -10,6 +10,8 @@
 		32A6ACCF1FA031B3006E34FB /* SecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32A6ACCE1FA031B3006E34FB /* SecondViewController.swift */; };
 		32E5F29E1FDE3FE0007571EB /* DragDropViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32E5F29D1FDE3FE0007571EB /* DragDropViewController.swift */; };
 		32E5F2A61FDE5C83007571EB /* NameText.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32E5F2A51FDE5C83007571EB /* NameText.swift */; };
+		32E5F2AC1FDF27A7007571EB /* LableObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32E5F2AB1FDF27A7007571EB /* LableObject.swift */; };
+		32E5F2AE1FDF2BDB007571EB /* ButtonObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32E5F2AD1FDF2BDB007571EB /* ButtonObject.swift */; };
 		4FFEB1261FDF0B4600207EBA /* PickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FFEB1251FDF0B4600207EBA /* PickerView.swift */; };
 		C80679C01CB9B7ED009BCB93 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C80679BF1CB9B7ED009BCB93 /* AppDelegate.swift */; };
 		C80679C51CB9B7ED009BCB93 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C80679C31CB9B7ED009BCB93 /* Main.storyboard */; };
@@ -22,6 +24,8 @@
 		32A6ACCE1FA031B3006E34FB /* SecondViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondViewController.swift; sourceTree = "<group>"; };
 		32E5F29D1FDE3FE0007571EB /* DragDropViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DragDropViewController.swift; sourceTree = "<group>"; };
 		32E5F2A51FDE5C83007571EB /* NameText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NameText.swift; sourceTree = "<group>"; };
+		32E5F2AB1FDF27A7007571EB /* LableObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LableObject.swift; sourceTree = "<group>"; };
+		32E5F2AD1FDF2BDB007571EB /* ButtonObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonObject.swift; sourceTree = "<group>"; };
 		4FFEB1251FDF0B4600207EBA /* PickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickerView.swift; sourceTree = "<group>"; };
 		C80679BC1CB9B7ED009BCB93 /* BLETemperatureReaderSwift.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BLETemperatureReaderSwift.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C80679BF1CB9B7ED009BCB93 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -66,6 +70,8 @@
 				C80679BF1CB9B7ED009BCB93 /* AppDelegate.swift */,
 				C80679C31CB9B7ED009BCB93 /* Main.storyboard */,
 				32E5F29D1FDE3FE0007571EB /* DragDropViewController.swift */,
+				32E5F2AD1FDF2BDB007571EB /* ButtonObject.swift */,
+				32E5F2AB1FDF27A7007571EB /* LableObject.swift */,
 				4FFEB1251FDF0B4600207EBA /* PickerView.swift */,
 				32E5F2A51FDE5C83007571EB /* NameText.swift */,
 				C80679C61CB9B7ED009BCB93 /* Assets.xcassets */,
@@ -166,11 +172,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				32E5F2AE1FDF2BDB007571EB /* ButtonObject.swift in Sources */,
 				32A6ACCF1FA031B3006E34FB /* SecondViewController.swift in Sources */,
 				32E5F29E1FDE3FE0007571EB /* DragDropViewController.swift in Sources */,
 				4FFEB1261FDF0B4600207EBA /* PickerView.swift in Sources */,
 				C80679D61CB9C03A009BCB93 /* Device.swift in Sources */,
 				C80679C01CB9B7ED009BCB93 /* AppDelegate.swift in Sources */,
+				32E5F2AC1FDF27A7007571EB /* LableObject.swift in Sources */,
 				32E5F2A61FDE5C83007571EB /* NameText.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

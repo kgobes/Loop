@@ -11,11 +11,11 @@ import UIKit
 class DragDropViewController: UIViewController{
     
     //init(){
-        var frame1 = CGRect(x: 30, y: 150, width: 150, height: 30)
-        var frame2 = CGRect(x: 30, y: 180, width: 100, height: 30)
+        var frame1 = CGRect(x: 30, y: 150, width: 100, height: 30)
+        var frame2 = CGRect(x: 30, y: 180, width: 80, height: 30)
         var frame3 = CGRect(x: 30, y: 250, width: 100, height: 200)
-        var ifNearBlock = NameText();
-        var thenBlock = NameText();
+        var ifNearBlock = LableObject();
+        var thenBlock = LableObject();
         var colorPicker = PickerView();
    /* }
     required init(coder decoder: NSCoder) {
@@ -56,9 +56,9 @@ class DragDropViewController: UIViewController{
         //if the Meet a friend button is clicked
         if theButton.titleLabel?.text == "Meet a friend"{
             //frame = CGRect(x: 30, y: 150, width: 150, height: 30)
-            ifNearBlock = NameText(frame: frame1, textContainer:nil)
+            ifNearBlock = LableObject(frame: frame1)
             //frame = CGRect(x: 30, y: 180, width: 100, height: 30)
-            thenBlock = NameText(frame:frame2,textContainer: nil)
+            thenBlock = LableObject(frame:frame2)
             ifNearBlock.backgroundColor = UIColor.yellow
             ifNearBlock.text = "If meet   "
             thenBlock.backgroundColor = UIColor.yellow
@@ -83,15 +83,27 @@ class DragDropViewController: UIViewController{
             
         }
         else if theButton.titleLabel?.text == "Change LED color"{
-            let frame = CGRect(x: 30, y: 210, width: 200, height: 30)
-            let changeColorBlock = NameText(frame: frame, textContainer:nil)
+            let frame = CGRect(x: 30, y: 300, width: 200, height: 30)
+            let changeColorBlock = LableObject(frame: frame)
             changeColorBlock.backgroundColor = UIColor.magenta
             changeColorBlock.text = "Turn LED color to    "
             changeColorBlock.contentMode = .scaleAspectFit
             self.view.addSubview(changeColorBlock)
         }
-        else if theButton.titleLabel?.text == "Add Friend: Michelle"{
-            print("michelle added")
+        else if theButton.titleLabel?.text == "Name of friend"{
+            let frame = CGRect(x: 30, y: 300, width: 200, height: 30)
+            let changeName = ButtonObject(frame:frame)
+            changeName.backgroundColor = UIColor.magenta
+            changeName.titleLabel?.text = "Click to change name"
+            changeName.contentMode = .scaleAspectFit
+            self.view.addSubview(changeName)
+        }else if theButton.titleLabel?.text == "Color"{
+            let frame = CGRect(x: 30, y: 300, width: 200, height: 30)
+            let changeColor = ButtonObject(frame:frame)
+            changeColor.backgroundColor = UIColor.magenta
+            changeColor.titleLabel?.text = "Click to change color"
+            changeColor.contentMode = .scaleAspectFit
+            self.view.addSubview(changeColor)
         }
         
     }
