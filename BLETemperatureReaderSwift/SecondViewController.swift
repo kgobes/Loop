@@ -36,8 +36,11 @@ class SecondViewController: UIViewController, CBCentralManagerDelegate, CBPeriph
     var lastHumidity:Double = -9999
     var circleDrawn = false
     var keepScanning = false
-    //var enableValue:UInt8 = 2
-    var enableValue:String = "2"
+    var enableValue:UInt8 = 2
+    //var enableValue:String = "2"
+    var foundMyBracelet = false
+    var foundFriendA = false;
+    
     //var isScanning = false
     
     // Core Bluetooth properties
@@ -51,7 +54,8 @@ class SecondViewController: UIViewController, CBCentralManagerDelegate, CBPeriph
     // the SensorTag, or if you don't know what model it is...)
     let sensorTagName = "Adafruit Bluefruit LE"
     
-    let trinketID = "Adafruit Bluefruit LE F68E"
+    let trinketID = "Adafruit Bluefruit LE"
+    
     //NEW 10/17
     
 //    @IBAction func clickSTART(_ sender: Any) {
@@ -244,29 +248,31 @@ class SecondViewController: UIViewController, CBCentralManagerDelegate, CBPeriph
     func centralManager(_ central: CBCentralManager, didDiscover peripheral: CBPeripheral, advertisementData: [String : Any], rssi RSSI: NSNumber) {
         //commenting out annoying print line
         //print("centralManager didDiscoverPeripheral - CBAdvertisementDataLocalNameKey is \"\(CBAdvertisementDataLocalNameKey)\"")
-        var foundMyBracelet = false
+       
         // Retrieve the peripheral name from the advertisement data using the "kCBAdvDataLocalName" key
         if let peripheralName = advertisementData[CBAdvertisementDataLocalNameKey] as? String {
             print("NEXT PERIPHERAL NAME: \(peripheralName)")
             print("NEXT PERIPHERAL UUID: \(peripheral.identifier.uuidString)")
-            
-            if peripheralName == sensorTagName {
-                foundMyBracelet = true
-                //pauseScan()
-                print("Found bracelet. ")
-                // to save power, stop scanning for other devices
-                keepScanning = false
-                disconnectButton.isEnabled = true
-                
-                // save a reference to the sensor tag
-                sensorTag = peripheral
-                sensorTag!.delegate = self
-                
-                // Request a connection to the peripheral
-                centralManager.connect(sensorTag!, options: nil)
+            if !foundMyBracelet{ //no bracelet found yet, the one we have found is users
+                if peripheralName == sensorTagName {
+                    foundMyBracelet = true
+                    //pauseScan()
+                    print("Found bracelet. ")
+                    // to save power, stop scanning for other devices
+                    keepScanning = false
+                    disconnectButton.isEnabled = true
+                    
+                    // save a reference to the sensor tag
+                    sensorTag = peripheral
+                    sensorTag!.delegate = self
+                    
+                    // Request a connection to the peripheral
+                    centralManager.connect(sensorTag!, options: nil)
+                }
             }
-            if peripheralName == trinketID {
+            else if peripheralName == trinketID && foundMyBracelet && !foundFriendA { //find another bracelet after the first one
                 print("found trinket")
+                foundFriendA = true
                 nearTrinket()
             }
         }
@@ -329,6 +335,7 @@ class SecondViewController: UIViewController, CBCentralManagerDelegate, CBPeriph
             print("****** DISCONNECTION DETAILS: \(error!.localizedDescription)")
         }
         sensorTag = nil
+        foundMyBracelet = false
     }
     
     
@@ -379,14 +386,16 @@ class SecondViewController: UIViewController, CBCentralManagerDelegate, CBPeriph
      If unsuccessful, the error parameter returns the cause of the failure.
      */
     func peripheral(_ peripheral: CBPeripheral, didDiscoverCharacteristicsFor service: CBService, error: Error?) {
+        print("in discover characteristics method");
         if error != nil {
             print("ERROR DISCOVERING CHARACTERISTICS: \(String(describing: error?.localizedDescription))")
             return
         }
         
         if let characteristics = service.characteristics {
+            print("in if for char")
             let enableBytes = withUnsafePointer(to: &enableValue){ //did this to convert in xcode9
-                return Data(bytes: $0, count: MemoryLayout<String>.size)
+                return Data(bytes: $0, count: MemoryLayout<UInt8>.size)
             }
             //let enableBytes = dataWithHexString(hex: enableValue)
            // let enableBytes = Data(hexString: enableValue)
@@ -454,16 +463,16 @@ class SecondViewController: UIViewController, CBCentralManagerDelegate, CBPeriph
     
     // Below are the functions of changing color
     @IBAction func changeLEDToRed(_ sender: UIButton) {
-        enableValue = "FF0000" //orginally 1
+        enableValue = 1//"FF0000" //orginally 1
         print("change color to 1")
         sensorTag?.discoverServices(nil)
         print("after discover services call")
     }
     
     @IBAction func changeLEDToBlue(_ sender: UIButton) {
-         enableValue = "0000FF"
+         enableValue = 2//"0000FF"
          print("change color to 2")
-        if sensorTag == nil{
+        if sensorTag == nil{ //check to see if sensor is still active
             print("sensor tag is nil")
         }
         else{
@@ -473,13 +482,13 @@ class SecondViewController: UIViewController, CBCentralManagerDelegate, CBPeriph
     }
     
     @IBAction func changeLEDToGreen(_ sender: UIButton) {
-        enableValue = "00FF00"
+        enableValue = 3//"00FF00"
          print("change color to 3")
         sensorTag?.discoverServices(nil)
     }
     
     func nearTrinket(){
-        enableValue = "4"
+        enableValue = 4//"4"
         print("going to change color for detected friend")
         sensorTag?.discoverServices(nil)
     }
