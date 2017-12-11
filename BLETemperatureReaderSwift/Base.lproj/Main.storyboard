@@ -95,6 +95,14 @@
                                     <action selector="handleDisconnectButtonTapped:" destination="Msk-UT-8UQ" eventType="touchUpInside" id="tBM-hU-a0r"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ysP-L8-MlZ">
+                                <rect key="frame" x="125" y="455" width="124" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Go to Work Space"/>
+                                <connections>
+                                    <segue destination="8UD-Yk-Jsg" kind="show" id="Agb-RF-rtT"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -124,6 +132,50 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qTx-Bi-1EB" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1782" y="447"/>
+        </scene>
+        <!--Drag Drop View Controller-->
+        <scene sceneID="gdZ-KT-Dqb">
+            <objects>
+                <viewController id="8UD-Yk-Jsg" customClass="DragDropViewController" customModule="BLETemperatureReaderSwift" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="gSF-eX-yqJ"/>
+                        <viewControllerLayoutGuide type="bottom" id="R0z-AS-XPA"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="wPR-AO-Wxv">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VcM-hT-hEy">
+                                <rect key="frame" x="16" y="71" width="144" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Meet a friend"/>
+                                <connections>
+                                    <action selector="objectAddedWithTheButton:" destination="8UD-Yk-Jsg" eventType="touchUpInside" id="IVf-mh-hlf"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6lp-ph-lop">
+                                <rect key="frame" x="215" y="71" width="144" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Change LED color"/>
+                                <connections>
+                                    <action selector="objectAddedWithTheButton:" destination="8UD-Yk-Jsg" eventType="touchUpInside" id="OiN-Sj-rbm"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="p1f-YG-3VK">
+                                <rect key="frame" x="22" y="20" width="34" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Back"/>
+                                <connections>
+                                    <segue destination="Msk-UT-8UQ" kind="show" id="KVV-Pi-uhj"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="TQf-jb-WwJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2544.8000000000002" y="446.62668665667172"/>
         </scene>
     </scenes>
 </document>
