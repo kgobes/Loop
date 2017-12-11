@@ -16,6 +16,7 @@ class DragDropViewController: UIViewController{
         var frame3 = CGRect(x: 30, y: 250, width: 100, height: 200)
         var ifNearBlock = NameText();
         var thenBlock = NameText();
+        var colorPicker = PickerView();
    /* }
     required init(coder decoder: NSCoder) {
         super.init(coder: decoder)
@@ -23,6 +24,7 @@ class DragDropViewController: UIViewController{
     
     //@IBOutlet weak var colorPicker: UIPickerView!
    
+    @IBOutlet weak var saveButton: UIButton!
     
     
     //colorPicker.isHidden = true;
@@ -31,6 +33,12 @@ class DragDropViewController: UIViewController{
     
     @IBAction func nearFriendButtonEdit(_ sender: Any) {
         print("edited the button")
+    }
+    @IBAction func saveButtonClicked(_ sender: Any) {
+        print("save button clicked");
+        var color = colorPicker.getSelectedRow();
+        SecondViewController().nearFriendAdded(color: color)
+        
     }
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -59,8 +67,8 @@ class DragDropViewController: UIViewController{
             thenBlock.contentMode = .scaleAspectFit
             self.view.addSubview(ifNearBlock)
             self.view.addSubview(thenBlock)
-            SecondViewController().nearFriendAdded(ifNearBlock: ifNearBlock)
-            var colorPicker = PickerView(frame:frame3)
+            
+            colorPicker = PickerView(frame:frame3)
             colorPicker.isUserInteractionEnabled = true
 
             //colorPicker.PickerView(pickerView: colorPicker, titleForRow: "cat", forComponent: <#T##Int#>)

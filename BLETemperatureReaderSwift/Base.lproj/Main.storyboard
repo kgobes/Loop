@@ -170,11 +170,20 @@
                                     <segue destination="Msk-UT-8UQ" kind="show" id="KVV-Pi-uhj"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Dx4-5M-0cX">
+                                <rect key="frame" x="221" y="597" width="34" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Save"/>
+                                <connections>
+                                    <action selector="saveButtonClicked:" destination="8UD-Yk-Jsg" eventType="touchDown" id="P8d-FV-oMa"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </view>
                     <connections>
                         <outlet property="nearFriendButton" destination="VcM-hT-hEy" id="Usx-L9-lpL"/>
+                        <outlet property="saveButton" destination="Dx4-5M-0cX" id="g4F-Jm-RXE"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="TQf-jb-WwJ" userLabel="First Responder" sceneMemberID="firstResponder"/>

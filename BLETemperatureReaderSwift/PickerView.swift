@@ -9,6 +9,7 @@
 import UIKit
 
 class PickerView: UIPickerView, UIPickerViewDataSource, UIPickerViewDelegate {
+    var selectedRow = "temp color"
     override init(frame: CGRect) {
         print("init picker view")
         super.init(frame:frame)
@@ -31,14 +32,18 @@ class PickerView: UIPickerView, UIPickerViewDataSource, UIPickerViewDelegate {
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
         return colors.count
     }
-    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int){
         print("color selected")
+        selectedRow = colors[row]
     }
     
     override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
         super.touchesMoved(touches, with: event)
         let touch = touches.first
         self.center = touch!.location(in: self.superview)
+    }
+    func getSelectedRow() -> String{
+        return selectedRow;
     }
     
     /*
