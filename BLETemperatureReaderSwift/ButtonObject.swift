@@ -11,10 +11,20 @@ import UIKit
 class ButtonObject: UIButton {
     override init(frame: CGRect) {
         super.init(frame: frame)
+        
+        print("button object class init")
+    }
+    func viewDidLoad(){
+        self.addTarget(self, action: Selector("pressed:"), for: .touchUpInside)
+        print("here")
     }
     
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+    func pressed(){
+        print("button was clicked");
     }
     
     override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -22,6 +32,7 @@ class ButtonObject: UIButton {
         let touch = touches.first
         self.center = touch!.location(in: self.superview)
     }
+   
     
     /*
     // Only override draw() if you perform custom drawing.
