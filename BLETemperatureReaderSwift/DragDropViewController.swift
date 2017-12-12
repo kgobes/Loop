@@ -76,6 +76,13 @@ class DragDropViewController: UIViewController{
             changeName.backgroundColor = UIColor.blue
              changeName.setTitle("Click to change name", for: .normal)
             changeName.addTarget(self, action: #selector(pressedButton), for: .touchUpInside)
+            changeName.addTarget(self,
+                             action: #selector(drag(control:event:)),
+                             for: UIControlEvents.touchDragInside)
+            changeName.addTarget(self,
+                             action: #selector(drag(control:event:)),
+                             for: [UIControlEvents.touchDragExit,
+                                   UIControlEvents.touchDragOutside])
             changeName.setTitleColor(.black, for: .normal)
             self.view.addSubview(changeName)
             
@@ -125,11 +132,12 @@ class DragDropViewController: UIViewController{
             //changeName.setTitle("Tap to select name", for: .normal)
         }
     }
-    /*
-    override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
-        super.touchesMoved(touches, with: event)
-        let touch = touches.first
-        self.center = touch!.location(in: self.superview)
-    }*/
+    
+    func drag(control: UIControl, event: UIEvent) {
+        if let center = event.allTouches?.first?.location(in: self.view) {
+            control.center = center
+        }
+    }
+   
     
 }
