@@ -27,6 +27,10 @@ class DragDropViewController: UIViewController{
     var colorBlockBool = false;
     var colorChosenBool = false;
     
+    //important values to send to code
+    var colorToChangeTo = "blue";
+    var friendA = "DefaultFriend";
+    
     
     @IBOutlet weak var saveButton: UIButton!
     
@@ -35,8 +39,16 @@ class DragDropViewController: UIViewController{
 
     @IBAction func saveButtonClicked(_ sender: Any) {
         print("save button clicked");
-        var color = colorPicker.getSelectedRow();
-        SecondViewController().nearFriendAdded(color: color)
+        
+        //checkConditions()
+        print(checkConditions())
+        print(colorToChangeTo);
+        SecondViewController().updateLEDs(color: colorToChangeTo);
+        //BluetoothHandler().nearFriendAdded(colorToChangeTo)
+    }
+    @IBAction func backButton(_ sender: Any) {
+        let homepg = storyboard?.instantiateViewController(withIdentifier: "Second View Controller")
+        homepg?.viewDidLoad()
     }
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -96,6 +108,7 @@ class DragDropViewController: UIViewController{
             self.view.addSubview(changeName)
             var frameFriendPicker = CGRect(x: 215, y: 120, width: 250, height: 150)
             friendPicker = PickerView(frame:frameFriendPicker)
+            friendPicker.setPickerType(typeOfPicker: 2)
             friendPicker.isUserInteractionEnabled = true
             friendPicker.contentMode = .scaleAspectFit
     
@@ -121,6 +134,7 @@ class DragDropViewController: UIViewController{
             self.view.addSubview(changeColor)
             var frameColorPicker = CGRect(x: 200, y: 150, width: 300, height: 200)
             colorPicker = PickerView(frame:frameColorPicker)
+            colorPicker.setPickerType(typeOfPicker: 1);
             colorPicker.isUserInteractionEnabled = true
             colorPicker.contentMode = .scaleAspectFit
         }
@@ -128,6 +142,7 @@ class DragDropViewController: UIViewController{
     }
     
     func pressedFriendButton(){
+        print("in friend button method");
         if(!nameChangeClicked){
             friendPicker.isHidden = false; //make picker visible
             nameChangeClicked = true;
@@ -138,7 +153,8 @@ class DragDropViewController: UIViewController{
         else{
             friendChosenBool = true;
             friendPicker.isHidden = true; //hide picker
-            changeName.setTitle("name here", for: .normal);
+            friendA = friendPicker.getSelectedRow();
+            changeName.setTitle(friendA, for: .normal);
             nameChangeClicked = false;
             //changeName.setTitle("Tap to select name", for: .normal)
         }
@@ -146,7 +162,9 @@ class DragDropViewController: UIViewController{
     
     
     func pressedColorButton(){
+        print("in changed color");
         if(!colorChangeClicked){
+            print("in if in change color");
             colorPicker.isHidden = false; //make picker visible
             colorChangeClicked = true;
             //add color picker
@@ -154,9 +172,14 @@ class DragDropViewController: UIViewController{
             changeColor.setTitle("Tap to select color", for: .normal)
         }
         else{
+            print("in else");
             colorChosenBool = true;
             colorPicker.isHidden = true; //hide picker
-            changeColor.setTitle("color here", for: .normal);
+            colorToChangeTo = colorPicker.getSelectedRow();
+            print("color changed to ", colorToChangeTo);
+            print("getting status")
+            print(getStatus());
+            changeColor.setTitle(colorToChangeTo, for: .normal);
             colorChangeClicked = false;
         }
     }
@@ -166,6 +189,19 @@ class DragDropViewController: UIViewController{
             control.center = center
         }
     }
-   
+    func checkConditions() -> Bool{
+        if(colorChosenBool && friendChosenBool && ifNearBool && changeLEDBool && colorBlockBool && nameOfFriendBool){
+            return true;
+        }
+        else{
+            return false;
+        }
+    }
+    //color not updating here, not sure why yet
+    func getStatus()-> String{
+        print(colorToChangeTo);
+        return colorToChangeTo;
+    }
     
+
 }

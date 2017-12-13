@@ -4,20 +4,16 @@ import UIKit
 import CoreBluetooth
 
 // Conform to CBCentralManagerDelegate, CBPeripheralDelegate protocols
-class SecondViewController: UIViewController, CBCentralManagerDelegate, CBPeripheralDelegate {
-    
-    
-    
-
-    @IBOutlet weak var temperatureLabel: UILabel!
+class BluetoothHandler: UIViewController, CBCentralManagerDelegate, CBPeripheralDelegate {
+    @IBOutlet weak var temperatureLabel: UILabel! //connected text
     @IBOutlet weak var disconnectButton: UIButton!
-   
+    
     //Connect 3 change color button
-    @IBOutlet weak var changeColorToRed: UIButton!
+    /*@IBOutlet weak var changeColorToRed: UIButton!
     
     @IBOutlet weak var changeColorToBlue: UIButton!
     
-    @IBOutlet weak var changeColorToGreen: UIButton!
+    @IBOutlet weak var changeColorToGreen: UIButton!*/
     // define our scanning interval times
     let timerPauseInterval:TimeInterval = 10.0
     let timerScanInterval:TimeInterval = 2.0
@@ -30,11 +26,6 @@ class SecondViewController: UIViewController, CBCentralManagerDelegate, CBPeriph
     //var backgroundImageViews: [UIImageView]!
     var visibleBackgroundIndex = 0
     var invisibleBackgroundIndex = 1
-    var lastTemperatureTens = 0
-    let defaultInitialTemperature = -9999
-    var lastTemperature:Int!
-    var lastHumidity:Double = -9999
-    var circleDrawn = false
     var keepScanning = false
     var enableValue:UInt8 = 2
     //var enableValue:String = "2"
@@ -56,18 +47,15 @@ class SecondViewController: UIViewController, CBCentralManagerDelegate, CBPeriph
     
     let trinketID = "Adafruit Bluefruit LE"
     
-    //NEW 10/17
+    var newColor = "purple";
     
-//    @IBAction func clickSTART(_ sender: Any) {
-//        temperatureLabel.text = "Clicked button"
-//    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         
         
-        lastTemperature = defaultInitialTemperature
+
         
         // Create our CBCentral Manager
         // delegate: The delegate that will receive central role events. Typically self.
@@ -93,7 +81,7 @@ class SecondViewController: UIViewController, CBCentralManagerDelegate, CBPeriph
     // MARK: - Handling User Interaction
     
     
- 
+    
     @IBAction func handleDisconnectButtonTapped(_ sender: AnyObject) {
         // if we don't have a sensor tag, start scanning for one...
         if sensorTag == nil {
@@ -151,37 +139,6 @@ class SecondViewController: UIViewController, CBCentralManagerDelegate, CBPeriph
         } else {
             disconnectButton.isEnabled = true
         }
-    }
-    
-    
-    // MARK: - Updating UI
-
-    func displayTemperature(_ data:Data) {
-        // We'll get four bytes of data back, so we divide the byte count by two
-        // because we're creating an array that holds two 16-bit (two-byte) values
-        let dataLength = data.count / MemoryLayout<UInt16>.size
-        var dataArray = [UInt16](repeating: 0, count: dataLength)
-        (data as NSData).getBytes(&dataArray, length: dataLength * MemoryLayout<Int16>.size)
-        
-        //        // output values for debugging/diagnostic purposes
-        //        for i in 0 ..< dataLength {
-        //            let nextInt:UInt16 = dataArray[i]
-        //            print("next int: \(nextInt)")
-        //        }
-        
-     
-    }
-    
-    func displayHumidity(_ data:Data) {
-        let dataLength = data.count / MemoryLayout<UInt16>.size
-        var dataArray = [UInt16](repeating: 0, count: dataLength)
-        (data as NSData).getBytes(&dataArray, length: dataLength * MemoryLayout<Int16>.size)
-        
-        for i in 0 ..< dataLength {
-            let nextInt:UInt16 = dataArray[i]
-            print("next int: \(nextInt)")
-        }
-        
     }
     
     // MARK: - CBCentralManagerDelegate methods
@@ -246,9 +203,6 @@ class SecondViewController: UIViewController, CBCentralManagerDelegate, CBPeriph
      
      */
     func centralManager(_ central: CBCentralManager, didDiscover peripheral: CBPeripheral, advertisementData: [String : Any], rssi RSSI: NSNumber) {
-        //commenting out annoying print line
-        //print("centralManager didDiscoverPeripheral - CBAdvertisementDataLocalNameKey is \"\(CBAdvertisementDataLocalNameKey)\"")
-       
         // Retrieve the peripheral name from the advertisement data using the "kCBAdvDataLocalName" key
         if let peripheralName = advertisementData[CBAdvertisementDataLocalNameKey] as? String {
             print("NEXT PERIPHERAL NAME: \(peripheralName)")
@@ -324,13 +278,8 @@ class SecondViewController: UIViewController, CBCentralManagerDelegate, CBPeriph
      */
     func centralManager(_ central: CBCentralManager, didDisconnectPeripheral peripheral: CBPeripheral, error: Error?) {
         print("**** DISCONNECTED FROM SENSOR TAG!!!")
-        lastTemperature = 0
-        //  updateBackgroundImageForTemperature(lastTemperature)
-        //    circleView.isHidden = true
         temperatureLabel.font = UIFont(name: temperatureLabelFontName, size: temperatureLabelFontSizeMessage)
         temperatureLabel.text = "Tap to search"
-        // humidityLabel.text = ""
-        //  humidityLabel.isHidden = true
         if error != nil {
             print("****** DISCONNECTION DETAILS: \(error!.localizedDescription)")
         }
@@ -338,8 +287,7 @@ class SecondViewController: UIViewController, CBCentralManagerDelegate, CBPeriph
         foundMyBracelet = false
     }
     
-    
-    //MARK: - CBPeripheralDelegate methods
+
     
     /*
      Invoked when you discover the peripheral’s available services.
@@ -391,19 +339,13 @@ class SecondViewController: UIViewController, CBCentralManagerDelegate, CBPeriph
             print("ERROR DISCOVERING CHARACTERISTICS: \(String(describing: error?.localizedDescription))")
             return
         }
-        
         if let characteristics = service.characteristics {
             print("in if for char")
             let enableBytes = withUnsafePointer(to: &enableValue){ //did this to convert in xcode9
                 return Data(bytes: $0, count: MemoryLayout<UInt8>.size)
             }
-            //let enableBytes = dataWithHexString(hex: enableValue)
-           // let enableBytes = Data(hexString: enableValue)
             print("enable Value:" )
             print(enableValue)
-           // print("enable Bytes: ")
-            print(enableBytes)
-
             for characteristic in characteristics {
                 print("checking characteristics")
                 // Matches UUID characteristic
@@ -412,7 +354,6 @@ class SecondViewController: UIViewController, CBCentralManagerDelegate, CBPeriph
                     print("Matching characteristic ID")
                     temperatureCharacteristic = characteristic
                     sensorTag?.setNotifyValue(true, for: characteristic)
-                    // sensorTag?.writeValue(colorData, for: characteristic, type: .withResponse)
                     print("after set notify value");
                 }
                 
@@ -420,16 +361,12 @@ class SecondViewController: UIViewController, CBCentralManagerDelegate, CBPeriph
                 if characteristic.uuid == CBUUID(string: Device.TemperatureConfig) {
                     // Enable IR Temperature Sensor
                     print("Matching characteristic round 2")
-                    //sensorTag?.writeValue(colorData, for: characteristic, type: .withResponse)
-                    // print("after send");
-                    //sensorTag?.writeValue(enableBytes as Data, for: characteristic, type: .withResponse)
                     sensorTag?.writeValue(enableBytes as Data, for: characteristic, type: .withResponse)
-                    //not sure about ! or as Data
                     print("after send bytes");
                 }
                 
             }
-          
+            
         }
     }
     
@@ -454,41 +391,39 @@ class SecondViewController: UIViewController, CBCentralManagerDelegate, CBPeriph
         // extract the data from the characteristic's value property and display the value based on the characteristic type
         if let dataBytes = characteristic.value {
             if characteristic.uuid == CBUUID(string: Device.TemperatureDataUUID) {
-                displayTemperature(dataBytes)
+                //displayTemperature(dataBytes)
             } else if characteristic.uuid == CBUUID(string: Device.HumidityDataUUID) {
-                displayHumidity(dataBytes)
+               // displayHumidity(dataBytes)
             }
         }
     }
     
     // Below are the functions of changing color
     @IBAction func changeLEDToRed(_ sender: UIButton) {
-        changeLEDtoRed();
-    }
-    func changeLEDtoRed(){
         enableValue = 1//"FF0000" //orginally 1
         print("change color to 1")
         sensorTag?.discoverServices(nil)
         print("after discover services call")
-        }
+    }
     
     @IBAction func changeLEDToBlue(_ sender: UIButton) {
-        changeLEDtoBlue();
-    }
-    func changeLEDtoBlue(){
         enableValue = 2//"0000FF"
         print("change color to 2")
-             sensorTag?.discoverServices(nil)
+        if sensorTag == nil{ //check to see if sensor is still active
+            print("sensor tag is nil")
+        }
+        else{
+            print(sensorTag)
+        }
+        sensorTag?.discoverServices(nil)
     }
     
     @IBAction func changeLEDToGreen(_ sender: UIButton) {
-        changeLEDtoGreen();
-    }
-    func changeLEDtoGreen(){
         enableValue = 3//"00FF00"
         print("change color to 3")
         sensorTag?.discoverServices(nil)
     }
+    
     func nearTrinket(){
         enableValue = 4//"4"
         print("going to change color for detected friend")
@@ -497,42 +432,11 @@ class SecondViewController: UIViewController, CBCentralManagerDelegate, CBPeriph
     func nearFriendAdded(color: String){
         nearTrinket();
         print(color)
+        
     }
-    func updateLEDs(color: String){
-        let color = DragDropViewController().getStatus();
-        print(color);
-        if(color == "red"){
-          changeLEDtoRed();
-        }
-        else if(color == "blue"){
-            changeLEDtoBlue();
-        }
-        else if(color == "green"){
-            changeLEDtoGreen();
-        }
-       // keepScanning = true
-        //resumeScan()
-    }
+    
     // MARK: - TI Sensor Tag Utility Methods
 }
-/*
-extension Data {
-    init?(hexString: String) {
-        let len = hexString.count / 2
-        var data = Data(capacity: len)
-        for i in 0..<len {
-            let j = hexString.index(hexString.startIndex, offsetBy: i*2)
-            let k = hexString.index(j, offsetBy: 2)
-            let bytes = hexString[j..<k]
-            if var num = UInt8(bytes, radix: 16) {
-                data.append(&num, count: 1)
-            } else {
-                return nil
-            }
-        }
-        self = data
-    }
-}*/
 
 
 

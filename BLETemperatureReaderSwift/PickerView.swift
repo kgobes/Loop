@@ -9,9 +9,11 @@
 import UIKit
 
 class PickerView: UIPickerView, UIPickerViewDataSource, UIPickerViewDelegate {
-    var selectedRow = "temp color"
+    var selectedRow = "temp select";
+    var colorPicker = false; //1
+    var friendPicker = false; //2
+    
     override init(frame: CGRect) {
-        print("init picker view")
         super.init(frame:frame)
         self.delegate = self;
         self.dataSource = self;
@@ -22,26 +24,62 @@ class PickerView: UIPickerView, UIPickerViewDataSource, UIPickerViewDelegate {
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+    func setPickerType(typeOfPicker: Int){
+        if(typeOfPicker == 1){
+            colorPicker = true;
+        }
+        else if(typeOfPicker == 2){
+            friendPicker = true;
+        }
+    }
     let colors = ["red", "blue", "green"]
+    let friends = ["Michelle", "Kelsie", "Vibhor", "Kira"]
+    
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
         return 1
     }
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        return colors[row]
+        if(colorPicker){
+            return colors[row]
+        }
+        else if(friendPicker){
+            return friends[row]
+        }
+        else{
+            return "error";
+        }
     }
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        return colors.count
+        if(colorPicker){
+            return colors.count
+        }
+        else if(friendPicker){
+            return friends.count
+        }
+        else{ //error
+            return 1;
+        }
     }
+    //when stopped on one color
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int){
-        print("color selected")
-        selectedRow = colors[row]
+        //selectedRow = colors[row]
+        if(colorPicker){
+            selectedRow = colors[row]
+        }
+        else if(friendPicker){
+            selectedRow = friends[row]
+        }
+        else{ //error
+            selectedRow = "error";
+        }
     }
     
-    override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
+   /* override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
         super.touchesMoved(touches, with: event)
         let touch = touches.first
         self.center = touch!.location(in: self.superview)
-    }
+    }*/
+    //return current selection
     func getSelectedRow() -> String{
         return selectedRow;
     }

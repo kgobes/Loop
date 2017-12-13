@@ -167,6 +167,9 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Back"/>
                                 <connections>
+                                    <action selector="backButton:" destination="8UD-Yk-Jsg" eventType="touchUpInside" id="Tle-9E-xed"/>
+                                    <action selector="restartScan:" destination="45q-Ut-PPr" eventType="touchUpInside" id="pdt-nz-0VI"/>
+                                    <action selector="restartScanFromWorkspace:" destination="8UD-Yk-Jsg" eventType="touchUpInside" id="QPy-SX-TE1"/>
                                     <segue destination="Msk-UT-8UQ" kind="show" id="KVV-Pi-uhj"/>
                                 </connections>
                             </button>
@@ -203,6 +206,7 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="TQf-jb-WwJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="45q-Ut-PPr" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="2544.8000000000002" y="446.62668665667172"/>
         </scene>
