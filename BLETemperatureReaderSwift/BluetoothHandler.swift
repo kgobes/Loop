@@ -212,7 +212,7 @@ class BluetoothHandler: UIViewController, CBCentralManagerDelegate, CBPeripheral
                     centralManager.connect(sensorTag!, options: nil)
                 }
             }
-            else if peripheralName == trinketID && foundMyBracelet && !foundFriendA { //find another bracelet after the first one
+            else if peripheralName == "Adafruit Bluefruit LE CE34" && foundMyBracelet && !foundFriendA { //find another bracelet after the first one
                 print("found trinket")
                 foundFriendA = true
                 nearTrinket()
