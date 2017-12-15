@@ -5,25 +5,11 @@ import CoreBluetooth
 
 // Conform to CBCentralManagerDelegate, CBPeripheralDelegate protocols
 class BluetoothHandler: UIViewController, CBCentralManagerDelegate, CBPeripheralDelegate {
-   // @IBOutlet weak var temperatureLabel: UILabel! //connected text
-   // @IBOutlet weak var disconnectButton: UIButton!
-    
-    //Connect 3 change color button
-    /*@IBOutlet weak var changeColorToRed: UIButton!
-    
-    @IBOutlet weak var changeColorToBlue: UIButton!
-    
-    @IBOutlet weak var changeColorToGreen: UIButton!*/
+
     // define our scanning interval times
     let timerPauseInterval:TimeInterval = 10.0
     let timerScanInterval:TimeInterval = 2.0
     
-    // UI-related
-   // let temperatureLabelFontName = "HelveticaNeue-Thin"
-   // let temperatureLabelFontSizeMessage:CGFloat = 56.0
-   // let temperatureLabelFontSizeTemp:CGFloat = 81.0
-    
-    //var backgroundImageViews: [UIImageView]!
     var visibleBackgroundIndex = 0
     var invisibleBackgroundIndex = 1
     var keepScanning = false
@@ -31,6 +17,7 @@ class BluetoothHandler: UIViewController, CBCentralManagerDelegate, CBPeripheral
     //var enableValue:String = "2"
     var foundMyBracelet = false
     var foundFriendA = false;
+    var friends = [""]; //list to store saved friends in
     
     //var isScanning = false
     
@@ -92,10 +79,7 @@ class BluetoothHandler: UIViewController, CBCentralManagerDelegate, CBPeripheral
         }
     }*/
     func startManager(){
-        print("in start manager")
         centralManager = CBCentralManager(delegate: self, queue: nil)
-        print("central manager created")
-        
     }
     func disconnect() {
         if let sensorTag = self.sensorTag {
@@ -137,7 +121,7 @@ class BluetoothHandler: UIViewController, CBCentralManagerDelegate, CBPeripheral
             // Start scanning again...
             print("*** RESUMING SCAN!")
           //  disconnectButton.isEnabled = false
-            //temperatureLabel.font = UIFont(name: temperatureLabelFontName, size: temperatureLabelFontSizeMessage)
+          //temperatureLabelFontSizeMessage)
           //  temperatureLabel.text = "Searching"
             _ = Timer(timeInterval: timerScanInterval, target: self, selector: #selector(pauseScan), userInfo: nil, repeats: false)
             centralManager.scanForPeripherals(withServices: nil, options: nil)
@@ -146,7 +130,6 @@ class BluetoothHandler: UIViewController, CBCentralManagerDelegate, CBPeripheral
         }
     }
     
-    // MARK: - CBCentralManagerDelegate methods
     
     // Invoked when the central manager’s state is updated.
     func centralManagerDidUpdateState(_ central: CBCentralManager) {
@@ -376,6 +359,35 @@ class BluetoothHandler: UIViewController, CBCentralManagerDelegate, CBPeripheral
         sensorTag?.discoverServices(nil)
     }
     */
+    func updateLEDs(color: String){
+        //let color = DragDropViewController().getStatus();
+        print(color);
+        if(color == "red"){
+            changeLEDtoRed();
+        }
+        else if(color == "blue"){
+            changeLEDtoBlue();
+        }
+        else if(color == "green"){
+            changeLEDtoGreen();
+        }
+    }
+    func changeLEDtoRed(){
+        enableValue = 1//"FF0000" //orginally 1
+        print("change color to 1")
+        sensorTag?.discoverServices(nil)
+        print("after discover services call")
+    }
+    func changeLEDtoGreen(){
+        enableValue = 3//"00FF00"
+        print("change color to 3")
+        sensorTag?.discoverServices(nil)
+    }
+    func changeLEDtoBlue(){
+        enableValue = 2//"0000FF"
+        print("change color to 2")
+        sensorTag?.discoverServices(nil)
+    }
     func nearTrinket(){
         enableValue = 4//"4"
         print("going to change color for detected friend")
@@ -384,9 +396,15 @@ class BluetoothHandler: UIViewController, CBCentralManagerDelegate, CBPeripheral
     func nearFriendAdded(color: String){
         nearTrinket();
         print(color)
-        
     }
-    
+    //functions for adding friend
+    func friendSearch(friendName: String){
+        print("searching for friend ", friendName);
+        friends.append(friendName);
+    }
+    func getFriendList()->[String]{
+        return friends
+    }
 
 }
 

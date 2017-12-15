@@ -9,6 +9,7 @@
 import UIKit
 
 class DragDropViewController: UIViewController{
+    //bluetooth object for bracelet
     let bluetooth = BluetoothHandler()
     var ifNearBlock = LableObject();
     var thenBlock = LableObject();
@@ -45,18 +46,14 @@ class DragDropViewController: UIViewController{
         print(checkConditions())
         print(colorToChangeTo);
         
-
-        bluetooth.startManager()
         
-        //BluetoothConnect().startManager()
-        //SecondViewController().updateLEDs(color: colorToChangeTo);
-        //BluetoothHandler().nearFriendAdded(colorToChangeTo)
+       // bluetooth.startManager()
+        bluetooth.updateLEDs(color: colorToChangeTo)
+        
     }
-    @IBAction func backButton(_ sender: Any) {
-        let homepg = storyboard?.instantiateViewController(withIdentifier: "Second View Controller")
-        homepg?.viewDidLoad()
-    }
+   
     override func viewDidLoad() {
+        bluetooth.startManager()
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
@@ -113,8 +110,13 @@ class DragDropViewController: UIViewController{
             changeName.setTitleColor(.black, for: .normal)
             self.view.addSubview(changeName)
             var frameFriendPicker = CGRect(x: 215, y: 120, width: 250, height: 150)
+            //friendPicker = UIPickerView() as! PickerView
+            //friendPicker.frame = frameFriendPicker
+           // friendPicker.delegate = self as! UIPickerViewDelegate
+           // friendPicker.dataSource = self as! UIPickerViewDataSource
             friendPicker = PickerView(frame:frameFriendPicker)
             friendPicker.setPickerType(typeOfPicker: 2)
+            //self.view.addSubview(friendPicker)
             friendPicker.isUserInteractionEnabled = true
             friendPicker.contentMode = .scaleAspectFit
     
@@ -209,5 +211,6 @@ class DragDropViewController: UIViewController{
         return colorToChangeTo;
     }
     
-
+//PICKER VIEW functions
+    
 }

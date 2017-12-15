@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="Msk-UT-8UQ">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="hSv-mv-FEJ">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -99,9 +99,6 @@
                                 <rect key="frame" x="125" y="455" width="124" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Go to Work Space"/>
-                                <connections>
-                                    <segue destination="8UD-Yk-Jsg" kind="show" id="Agb-RF-rtT"/>
-                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -136,7 +133,7 @@
         <!--BluetoothConnect-->
         <scene sceneID="php-Sr-2M2">
             <objects>
-                <viewController storyboardIdentifier="Bluetooth Connect Scene" title="BluetoothConnect" id="D01-hs-tBP" customClass="BluetoothConnect" customModule="BLETemperatureReaderSwift" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="HomeScreen" title="BluetoothConnect" id="D01-hs-tBP" customClass="BluetoothConnect" customModule="BLETemperatureReaderSwift" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="srV-GB-jEj"/>
                         <viewControllerLayoutGuide type="bottom" id="okb-Wj-Ox4"/>
@@ -144,22 +141,123 @@
                     <view key="view" contentMode="scaleToFill" id="2Ho-Mb-D9B" customClass="BluetoothConnect" customModule="BLETemperatureReaderSwift" customModuleProvider="target">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="p4N-P1-5Sz">
-                                <rect key="frame" x="115" y="336" width="99" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Connect to BT"/>
-                                <connections>
-                                    <action selector="connectButton:" destination="2Ho-Mb-D9B" eventType="touchUpInside" id="Ao1-2a-3FV"/>
-                                </connections>
-                            </button>
-                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3Pc-tB-nwp" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1782" y="1172"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="TsW-d8-YQy">
+            <objects>
+                <viewController id="hSv-mv-FEJ" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="lXv-VW-Edz"/>
+                        <viewControllerLayoutGuide type="bottom" id="ZRx-cu-oW6"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="Iwd-s2-XFH">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aII-ON-OKB">
+                                <rect key="frame" x="102" y="290" width="170" height="107"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Quick Load"/>
+                                <connections>
+                                    <segue destination="Msk-UT-8UQ" kind="show" id="XBw-IH-2q5"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wMQ-vS-n0r">
+                                <rect key="frame" x="102" y="453" width="170" height="114"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Add Friends"/>
+                                <connections>
+                                    <segue destination="99Y-tU-wqx" kind="show" id="FQL-rO-Sdn"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eoS-Xd-gns">
+                                <rect key="frame" x="102" y="123" width="170" height="121"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Go to Workspace"/>
+                                <connections>
+                                    <segue destination="8UD-Yk-Jsg" kind="show" id="ovk-Mv-z72"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="CZM-EQ-a6V" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2616.8000000000002" y="1259.8200899550227"/>
+        </scene>
+        <!--Add Friends-->
+        <scene sceneID="PkL-UH-bJ0">
+            <objects>
+                <viewController storyboardIdentifier="AddFriends" id="99Y-tU-wqx" customClass="AddFriends" customModule="BLETemperatureReaderSwift" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="eyM-x8-96V"/>
+                        <viewControllerLayoutGuide type="bottom" id="0Fb-Uw-5Qq"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="1QX-eT-JL4">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Add Friends" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NDa-pX-0cK">
+                                <rect key="frame" x="141" y="77" width="92" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Success?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NyC-7r-dKF">
+                                <rect key="frame" x="152" y="350" width="73" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="slB-kK-Icw">
+                                <rect key="frame" x="16" y="19" width="105" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Back"/>
+                                <connections>
+                                    <segue destination="hSv-mv-FEJ" kind="show" id="2FX-0x-f7o"/>
+                                </connections>
+                            </button>
+                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="jI1-A4-Po0">
+                                <rect key="frame" x="65" y="206" width="247" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Type Name of New Friend:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1Ao-1j-dP9">
+                                <rect key="frame" x="73" y="167" width="203" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1YA-kD-uJR">
+                                <rect key="frame" x="101" y="265" width="147" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Search for Friend"/>
+                                <connections>
+                                    <action selector="searchForFriend:" destination="99Y-tU-wqx" eventType="touchUpInside" id="Vp3-bt-I1m"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <connections>
+                        <outlet property="friendToAdd" destination="jI1-A4-Po0" id="cod-Wt-42D"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="u4u-eN-oxR" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3748" y="1303.8980509745129"/>
         </scene>
         <!--Drag Drop View Controller-->
         <scene sceneID="gdZ-KT-Dqb">
@@ -173,56 +271,93 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VcM-hT-hEy">
-                                <rect key="frame" x="16" y="71" width="144" height="30"/>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="SF3-UU-HMK">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="213"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="If Near... Then"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="p1f-YG-3VK">
+                                        <rect key="frame" x="25" y="45" width="52" height="30"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        <color key="tintColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                        <state key="normal" title="Back">
+                                            <color key="titleColor" red="0.0018058451554523788" green="0.0015766203057784188" blue="0.001953125" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="backButton:" destination="8UD-Yk-Jsg" eventType="touchUpInside" id="Tle-9E-xed"/>
+                                            <action selector="restartScan:" destination="45q-Ut-PPr" eventType="touchUpInside" id="pdt-nz-0VI"/>
+                                            <action selector="restartScanFromWorkspace:" destination="8UD-Yk-Jsg" eventType="touchUpInside" id="QPy-SX-TE1"/>
+                                            <segue destination="hSv-mv-FEJ" kind="show" id="CzM-8v-vBD"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Dx4-5M-0cX">
+                                        <rect key="frame" x="297" y="45" width="51" height="30"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        <color key="tintColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                        <state key="normal" title="Save">
+                                            <color key="titleColor" red="0.0019247203237499539" green="0.0018683073647437732" blue="0.001953125" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <color key="titleShadowColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="saveButtonClicked:" destination="8UD-Yk-Jsg" eventType="touchDown" id="P8d-FV-oMa"/>
+                                        </connections>
+                                    </button>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Tap to add blocks for functionality" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="2" baselineAdjustment="alignBaselines" highlighted="YES" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AGl-Db-Q8h">
+                                        <rect key="frame" x="98" y="43" width="186" height="70"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" red="0.57966034231905084" green="0.98623542175840018" blue="1" alpha="0.39211933724832215" colorSpace="custom" customColorSpace="sRGB"/>
+                            </view>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VcM-hT-hEy">
+                                <rect key="frame" x="16" y="111" width="144" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="1" green="0.97447820827428988" blue="0.18563523336952203" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="tintColor" red="0.54133109470832186" green="0.43809733932407069" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <state key="normal" title="If Near... Then">
+                                    <color key="titleColor" red="0.001953125" green="0.0019329648136626318" blue="0.0019432838170569313" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <color key="titleShadowColor" red="1" green="0.98967798459526746" blue="0.99496131433314883" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
                                 <connections>
                                     <action selector="nearFriendButtonEdit:" destination="8UD-Yk-Jsg" eventType="editingDidEnd" id="Vvy-zP-8q4"/>
                                     <action selector="objectAddedWithTheButton:" destination="8UD-Yk-Jsg" eventType="touchUpInside" id="IVf-mh-hlf"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6lp-ph-lop">
-                                <rect key="frame" x="16" y="117" width="144" height="30"/>
+                                <rect key="frame" x="16" y="157" width="144" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Change LED color"/>
+                                <color key="backgroundColor" red="1" green="0.53680056353139238" blue="0.9588952789909857" alpha="0.86034500838926176" colorSpace="custom" customColorSpace="sRGB"/>
+                                <state key="normal" title="Change LED color">
+                                    <color key="titleColor" red="0.0012711815313414146" green="0.0013212438440353969" blue="0.001953125" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
                                 <connections>
                                     <action selector="objectAddedWithTheButton:" destination="8UD-Yk-Jsg" eventType="touchUpInside" id="OiN-Sj-rbm"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="p1f-YG-3VK">
-                                <rect key="frame" x="22" y="20" width="52" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Back"/>
-                                <connections>
-                                    <action selector="backButton:" destination="8UD-Yk-Jsg" eventType="touchUpInside" id="Tle-9E-xed"/>
-                                    <action selector="restartScan:" destination="45q-Ut-PPr" eventType="touchUpInside" id="pdt-nz-0VI"/>
-                                    <action selector="restartScanFromWorkspace:" destination="8UD-Yk-Jsg" eventType="touchUpInside" id="QPy-SX-TE1"/>
-                                    <segue destination="Msk-UT-8UQ" kind="show" id="KVV-Pi-uhj"/>
-                                </connections>
-                            </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YiC-rb-qbg">
-                                <rect key="frame" x="221" y="71" width="138" height="30"/>
+                                <rect key="frame" x="221" y="111" width="138" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Name of Friend"/>
+                                <color key="backgroundColor" red="0.2359829667493355" green="1" blue="0.96543751029063163" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <state key="normal" title="Name of Friend">
+                                    <color key="titleColor" red="0.0019443818968676214" green="0.001896157579841325" blue="0.001953125" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
                                 <connections>
                                     <action selector="objectAddedWithTheButton:" destination="8UD-Yk-Jsg" eventType="touchUpInside" id="lML-h3-EVi"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Xcf-oC-mAB">
-                                <rect key="frame" x="221" y="117" width="138" height="30"/>
+                                <rect key="frame" x="221" y="157" width="138" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Color"/>
+                                <color key="backgroundColor" red="0.17845052420075735" green="1" blue="0.27348711268794668" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <state key="normal" title="Color">
+                                    <color key="titleColor" red="0.0011900453483273744" green="0.001953125" blue="0.0014092315690751246" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
                                 <connections>
                                     <action selector="objectAddedWithTheButton:" destination="8UD-Yk-Jsg" eventType="touchUpInside" id="lPb-q3-rqv"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Dx4-5M-0cX">
-                                <rect key="frame" x="306" y="20" width="51" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Save"/>
-                                <connections>
-                                    <action selector="saveButtonClicked:" destination="8UD-Yk-Jsg" eventType="touchDown" id="P8d-FV-oMa"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -239,4 +374,7 @@
             <point key="canvasLocation" x="2544.8000000000002" y="446.62668665667172"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="CzM-8v-vBD"/>
+    </inferredMetricsTieBreakers>
 </document>

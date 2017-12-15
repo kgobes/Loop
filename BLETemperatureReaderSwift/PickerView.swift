@@ -34,6 +34,7 @@ class PickerView: UIPickerView, UIPickerViewDataSource, UIPickerViewDelegate {
     }
     let colors = ["red", "blue", "green"]
     let friends = ["Michelle", "Kelsie", "Vibhor", "Kira"]
+    //let friends = BluetoothHandler.getFriends();
     
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
         return 1
@@ -73,23 +74,11 @@ class PickerView: UIPickerView, UIPickerViewDataSource, UIPickerViewDelegate {
             selectedRow = "error";
         }
     }
-    
-   /* override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
-        super.touchesMoved(touches, with: event)
-        let touch = touches.first
-        self.center = touch!.location(in: self.superview)
-    }*/
+
     //return current selection
     func getSelectedRow() -> String{
         return selectedRow;
     }
     
-    /*
-    // Only override draw() if you perform custom drawing.
-    // An empty implementation adversely affects performance during animation.
-    override func draw(_ rect: CGRect) {
-        // Drawing code
-    }
-    */
-
+  
 }

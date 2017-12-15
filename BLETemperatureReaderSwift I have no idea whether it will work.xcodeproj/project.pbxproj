@@ -13,7 +13,7 @@
 		32E5F2AC1FDF27A7007571EB /* LableObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32E5F2AB1FDF27A7007571EB /* LableObject.swift */; };
 		32E5F2AE1FDF2BDB007571EB /* ButtonObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32E5F2AD1FDF2BDB007571EB /* ButtonObject.swift */; };
 		4FDC35571FE06D0B00C01A8B /* BluetoothHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FDC35561FE06D0B00C01A8B /* BluetoothHandler.swift */; };
-		4FDC355D1FE36F3500C01A8B /* BluetoothConnect.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FDC355C1FE36F3500C01A8B /* BluetoothConnect.swift */; };
+		4FDC355F1FE3950500C01A8B /* AddFriends.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FDC355E1FE3950500C01A8B /* AddFriends.swift */; };
 		4FFEB1261FDF0B4600207EBA /* PickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FFEB1251FDF0B4600207EBA /* PickerView.swift */; };
 		C80679C01CB9B7ED009BCB93 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C80679BF1CB9B7ED009BCB93 /* AppDelegate.swift */; };
 		C80679C51CB9B7ED009BCB93 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C80679C31CB9B7ED009BCB93 /* Main.storyboard */; };
@@ -29,7 +29,7 @@
 		32E5F2AB1FDF27A7007571EB /* LableObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LableObject.swift; sourceTree = "<group>"; };
 		32E5F2AD1FDF2BDB007571EB /* ButtonObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonObject.swift; sourceTree = "<group>"; };
 		4FDC35561FE06D0B00C01A8B /* BluetoothHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BluetoothHandler.swift; sourceTree = "<group>"; };
-		4FDC355C1FE36F3500C01A8B /* BluetoothConnect.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BluetoothConnect.swift; sourceTree = "<group>"; };
+		4FDC355E1FE3950500C01A8B /* AddFriends.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddFriends.swift; sourceTree = "<group>"; };
 		4FFEB1251FDF0B4600207EBA /* PickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickerView.swift; sourceTree = "<group>"; };
 		C80679BC1CB9B7ED009BCB93 /* BLETemperatureReaderSwift.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BLETemperatureReaderSwift.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C80679BF1CB9B7ED009BCB93 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -70,10 +70,10 @@
 		C80679BE1CB9B7ED009BCB93 /* BLETemperatureReaderSwift */ = {
 			isa = PBXGroup;
 			children = (
-				4FDC355C1FE36F3500C01A8B /* BluetoothConnect.swift */,
 				C80679D51CB9C03A009BCB93 /* Device.swift */,
 				C80679BF1CB9B7ED009BCB93 /* AppDelegate.swift */,
 				C80679C31CB9B7ED009BCB93 /* Main.storyboard */,
+				4FDC355E1FE3950500C01A8B /* AddFriends.swift */,
 				32E5F29D1FDE3FE0007571EB /* DragDropViewController.swift */,
 				4FDC35561FE06D0B00C01A8B /* BluetoothHandler.swift */,
 				32E5F2AD1FDF2BDB007571EB /* ButtonObject.swift */,
@@ -179,8 +179,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				32E5F2AE1FDF2BDB007571EB /* ButtonObject.swift in Sources */,
-				4FDC355D1FE36F3500C01A8B /* BluetoothConnect.swift in Sources */,
 				32A6ACCF1FA031B3006E34FB /* SecondViewController.swift in Sources */,
+				4FDC355F1FE3950500C01A8B /* AddFriends.swift in Sources */,
 				32E5F29E1FDE3FE0007571EB /* DragDropViewController.swift in Sources */,
 				4FFEB1261FDF0B4600207EBA /* PickerView.swift in Sources */,
 				C80679D61CB9C03A009BCB93 /* Device.swift in Sources */,

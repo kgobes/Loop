@@ -510,8 +510,6 @@ class SecondViewController: UIViewController, CBCentralManagerDelegate, CBPeriph
         else if(color == "green"){
             changeLEDtoGreen();
         }
-       // keepScanning = true
-        //resumeScan()
     }
     // MARK: - TI Sensor Tag Utility Methods
 }
