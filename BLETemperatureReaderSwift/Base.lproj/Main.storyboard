@@ -131,7 +131,35 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qTx-Bi-1EB" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1782" y="447"/>
+            <point key="canvasLocation" x="1781.5999999999999" y="446.62668665667172"/>
+        </scene>
+        <!--BluetoothConnect-->
+        <scene sceneID="php-Sr-2M2">
+            <objects>
+                <viewController storyboardIdentifier="Bluetooth Connect Scene" title="BluetoothConnect" id="D01-hs-tBP" customClass="BluetoothConnect" customModule="BLETemperatureReaderSwift" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="srV-GB-jEj"/>
+                        <viewControllerLayoutGuide type="bottom" id="okb-Wj-Ox4"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="2Ho-Mb-D9B" customClass="BluetoothConnect" customModule="BLETemperatureReaderSwift" customModuleProvider="target">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="p4N-P1-5Sz">
+                                <rect key="frame" x="115" y="336" width="99" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Connect to BT"/>
+                                <connections>
+                                    <action selector="connectButton:" destination="2Ho-Mb-D9B" eventType="touchUpInside" id="Ao1-2a-3FV"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="3Pc-tB-nwp" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1782" y="1172"/>
         </scene>
         <!--Drag Drop View Controller-->
         <scene sceneID="gdZ-KT-Dqb">

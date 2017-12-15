@@ -5,8 +5,8 @@ import CoreBluetooth
 
 // Conform to CBCentralManagerDelegate, CBPeripheralDelegate protocols
 class BluetoothHandler: UIViewController, CBCentralManagerDelegate, CBPeripheralDelegate {
-    @IBOutlet weak var temperatureLabel: UILabel! //connected text
-    @IBOutlet weak var disconnectButton: UIButton!
+   // @IBOutlet weak var temperatureLabel: UILabel! //connected text
+   // @IBOutlet weak var disconnectButton: UIButton!
     
     //Connect 3 change color button
     /*@IBOutlet weak var changeColorToRed: UIButton!
@@ -19,9 +19,9 @@ class BluetoothHandler: UIViewController, CBCentralManagerDelegate, CBPeripheral
     let timerScanInterval:TimeInterval = 2.0
     
     // UI-related
-    let temperatureLabelFontName = "HelveticaNeue-Thin"
-    let temperatureLabelFontSizeMessage:CGFloat = 56.0
-    let temperatureLabelFontSizeTemp:CGFloat = 81.0
+   // let temperatureLabelFontName = "HelveticaNeue-Thin"
+   // let temperatureLabelFontSizeMessage:CGFloat = 56.0
+   // let temperatureLabelFontSizeTemp:CGFloat = 81.0
     
     //var backgroundImageViews: [UIImageView]!
     var visibleBackgroundIndex = 0
@@ -61,7 +61,7 @@ class BluetoothHandler: UIViewController, CBCentralManagerDelegate, CBPeripheral
         // delegate: The delegate that will receive central role events. Typically self.
         // queue:    The dispatch queue to use to dispatch the central role events.
         //           If the value is nil, the central manager dispatches central role events using the main queue.
-        centralManager = CBCentralManager(delegate: self, queue: nil)
+        
         
         // Central Manager Initialization Options (Apple Developer Docs): http://tinyurl.com/zzvsgjh
         //  CBCentralManagerOptionShowPowerAlertKey
@@ -72,16 +72,15 @@ class BluetoothHandler: UIViewController, CBCentralManagerDelegate, CBPeripheral
         //centralManager = CBCentralManager(delegate: self, queue: nil, options: nil)
         
         // configure initial UI
-        temperatureLabel.font = UIFont(name: temperatureLabelFontName, size: temperatureLabelFontSizeMessage)
-        temperatureLabel.text = "Searching"
+        //temperatureLabel.font = UIFont(name: temperatureLabelFontName, size: temperatureLabelFontSizeMessage)
+        //temperatureLabel.text = "Searching"
         
     }
     
     
-    // MARK: - Handling User Interaction
     
     
-    
+   /*
     @IBAction func handleDisconnectButtonTapped(_ sender: AnyObject) {
         // if we don't have a sensor tag, start scanning for one...
         if sensorTag == nil {
@@ -91,6 +90,12 @@ class BluetoothHandler: UIViewController, CBCentralManagerDelegate, CBPeripheral
         } else {
             disconnect()
         }
+    }*/
+    func startManager(){
+        print("in start manager")
+        centralManager = CBCentralManager(delegate: self, queue: nil)
+        print("central manager created")
+        
     }
     func disconnect() {
         if let sensorTag = self.sensorTag {
@@ -124,20 +129,20 @@ class BluetoothHandler: UIViewController, CBCentralManagerDelegate, CBPeripheral
         print("*** PAUSING SCAN...")
         _ = Timer(timeInterval: timerPauseInterval, target: self, selector: #selector(resumeScan), userInfo: nil, repeats: false)
         centralManager.stopScan()
-        disconnectButton.isEnabled = true
+        //disconnectButton.isEnabled = true
     }
     
     @objc func resumeScan() {
         if keepScanning {
             // Start scanning again...
             print("*** RESUMING SCAN!")
-            disconnectButton.isEnabled = false
-            temperatureLabel.font = UIFont(name: temperatureLabelFontName, size: temperatureLabelFontSizeMessage)
-            temperatureLabel.text = "Searching"
+          //  disconnectButton.isEnabled = false
+            //temperatureLabel.font = UIFont(name: temperatureLabelFontName, size: temperatureLabelFontSizeMessage)
+          //  temperatureLabel.text = "Searching"
             _ = Timer(timeInterval: timerScanInterval, target: self, selector: #selector(pauseScan), userInfo: nil, repeats: false)
             centralManager.scanForPeripherals(withServices: nil, options: nil)
         } else {
-            disconnectButton.isEnabled = true
+            //disconnectButton.isEnabled = true
         }
     }
     
@@ -214,7 +219,7 @@ class BluetoothHandler: UIViewController, CBCentralManagerDelegate, CBPeripheral
                     print("Found bracelet. ")
                     // to save power, stop scanning for other devices
                     keepScanning = false
-                    disconnectButton.isEnabled = true
+                    //disconnectButton.isEnabled = true
                     
                     // save a reference to the sensor tag
                     sensorTag = peripheral
@@ -243,8 +248,8 @@ class BluetoothHandler: UIViewController, CBCentralManagerDelegate, CBPeripheral
         print("**** SUCCESSFULLY CONNECTED TO SENSOR TAG!!!")
         
         
-        temperatureLabel.font = UIFont(name: temperatureLabelFontName, size: temperatureLabelFontSizeMessage)
-        temperatureLabel.text = "Connected to bracelet!"
+        //temperatureLabel.font = UIFont(name: temperatureLabelFontName, size: temperatureLabelFontSizeMessage)
+       // temperatureLabel.text = "Connected to bracelet!"
         
         
         // Now that we've successfully connected to the SensorTag, let's discover the services.
@@ -253,33 +258,14 @@ class BluetoothHandler: UIViewController, CBCentralManagerDelegate, CBPeripheral
         //          Doing so saves battery life and saves time.
         peripheral.discoverServices(nil)
     }
-    
-    
-    /*
-     Invoked when the central manager fails to create a connection with a peripheral.
-     
-     This method is invoked when a connection initiated via the connectPeripheral:options: method fails to complete.
-     Because connection attempts do not time out, a failed connection usually indicates a transient issue,
-     in which case you may attempt to connect to the peripheral again.
-     */
     func centralManager(_ central: CBCentralManager, didFailToConnect peripheral: CBPeripheral, error: Error?) {
         print("**** CONNECTION TO SENSOR TAG FAILED!!!")
     }
     
-    
-    /*
-     Invoked when an existing connection with a peripheral is torn down.
-     
-     This method is invoked when a peripheral connected via the connectPeripheral:options: method is disconnected.
-     If the disconnection was not initiated by cancelPeripheralConnection:, the cause is detailed in error.
-     After this method is called, no more methods are invoked on the peripheral device’s CBPeripheralDelegate object.
-     
-     Note that when a peripheral is disconnected, all of its services, characteristics, and characteristic descriptors are invalidated.
-     */
     func centralManager(_ central: CBCentralManager, didDisconnectPeripheral peripheral: CBPeripheral, error: Error?) {
         print("**** DISCONNECTED FROM SENSOR TAG!!!")
-        temperatureLabel.font = UIFont(name: temperatureLabelFontName, size: temperatureLabelFontSizeMessage)
-        temperatureLabel.text = "Tap to search"
+       // temperatureLabel.font = UIFont(name: temperatureLabelFontName, size: temperatureLabelFontSizeMessage)
+       // temperatureLabel.text = "Tap to search"
         if error != nil {
             print("****** DISCONNECTION DETAILS: \(error!.localizedDescription)")
         }
@@ -288,18 +274,6 @@ class BluetoothHandler: UIViewController, CBCentralManagerDelegate, CBPeripheral
     }
     
 
-    
-    /*
-     Invoked when you discover the peripheral’s available services.
-     
-     This method is invoked when your app calls the discoverServices: method.
-     If the services of the peripheral are successfully discovered, you can access them
-     through the peripheral’s services property.
-     
-     If successful, the error parameter is nil.
-     If unsuccessful, the error parameter returns the cause of the failure.
-     */
-    // When the specified services are discovered, the peripheral calls the peripheral:didDiscoverServices: method of its delegate object.
     func peripheral(_ peripheral: CBPeripheral, didDiscoverServices error: Error?) {
         print("in discover services method")
         if error != nil {
@@ -322,17 +296,7 @@ class BluetoothHandler: UIViewController, CBCentralManagerDelegate, CBPeripheral
             }
         }
     }
-    
-    
-    /*
-     Invoked when you discover the characteristics of a specified service.
-     
-     If the characteristics of the specified service are successfully discovered, you can access
-     them through the service's characteristics property.
-     
-     If successful, the error parameter is nil.
-     If unsuccessful, the error parameter returns the cause of the failure.
-     */
+
     func peripheral(_ peripheral: CBPeripheral, didDiscoverCharacteristicsFor service: CBService, error: Error?) {
         print("in discover characteristics method");
         if error != nil {
@@ -370,18 +334,6 @@ class BluetoothHandler: UIViewController, CBCentralManagerDelegate, CBPeripheral
         }
     }
     
-    
-    /*
-     Invoked when you retrieve a specified characteristic’s value,
-     or when the peripheral device notifies your app that the characteristic’s value has changed.
-     
-     This method is invoked when your app calls the readValueForCharacteristic: method,
-     or when the peripheral notifies your app that the value of the characteristic for
-     which notifications and indications are enabled has changed.
-     
-     If successful, the error parameter is nil.
-     If unsuccessful, the error parameter returns the cause of the failure.
-     */
     func peripheral(_ peripheral: CBPeripheral, didUpdateValueFor characteristic: CBCharacteristic, error: Error?) {
         if error != nil {
             print("ERROR ON UPDATING VALUE FOR CHARACTERISTIC: \(characteristic) - \(String(describing: error?.localizedDescription))")
@@ -399,7 +351,7 @@ class BluetoothHandler: UIViewController, CBCentralManagerDelegate, CBPeripheral
     }
     
     // Below are the functions of changing color
-    @IBAction func changeLEDToRed(_ sender: UIButton) {
+  /*  @IBAction func changeLEDToRed(_ sender: UIButton) {
         enableValue = 1//"FF0000" //orginally 1
         print("change color to 1")
         sensorTag?.discoverServices(nil)
@@ -423,7 +375,7 @@ class BluetoothHandler: UIViewController, CBCentralManagerDelegate, CBPeripheral
         print("change color to 3")
         sensorTag?.discoverServices(nil)
     }
-    
+    */
     func nearTrinket(){
         enableValue = 4//"4"
         print("going to change color for detected friend")
@@ -435,7 +387,7 @@ class BluetoothHandler: UIViewController, CBCentralManagerDelegate, CBPeripheral
         
     }
     
-    // MARK: - TI Sensor Tag Utility Methods
+
 }
 
 

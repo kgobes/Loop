@@ -9,6 +9,7 @@
 import UIKit
 
 class DragDropViewController: UIViewController{
+    let bluetooth = BluetoothHandler()
     var ifNearBlock = LableObject();
     var thenBlock = LableObject();
     var colorPicker = PickerView();
@@ -43,7 +44,12 @@ class DragDropViewController: UIViewController{
         //checkConditions()
         print(checkConditions())
         print(colorToChangeTo);
-        SecondViewController().updateLEDs(color: colorToChangeTo);
+        
+
+        bluetooth.startManager()
+        
+        //BluetoothConnect().startManager()
+        //SecondViewController().updateLEDs(color: colorToChangeTo);
         //BluetoothHandler().nearFriendAdded(colorToChangeTo)
     }
     @IBAction func backButton(_ sender: Any) {
