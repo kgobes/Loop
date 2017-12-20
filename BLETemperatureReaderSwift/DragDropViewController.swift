@@ -69,10 +69,12 @@ class DragDropViewController: UIViewController{
         //if near friend button is clicked
         if theButton.titleLabel?.text == "If Near... Then"{
             ifNearBool = true;
+            //create ifnear and then block
             var frameIfNear = CGRect(x: 15, y: 180, width: 100, height: 50)
             ifNearBlock = LableObject(frame: frameIfNear)
             var frameThen = CGRect(x: 15, y: 230, width: 100, height: 50)
             thenBlock = LableObject(frame:frameThen)
+            //set ifnear and then block
             ifNearBlock.backgroundColor = UIColor.yellow
             ifNearBlock.text = "If near:  "
             thenBlock.backgroundColor = UIColor.yellow
@@ -82,8 +84,11 @@ class DragDropViewController: UIViewController{
             self.view.addSubview(ifNearBlock)
             self.view.addSubview(thenBlock)
         }
+            
+        //if change LED color button is clicked
         else if theButton.titleLabel?.text == "Change LED color"{
             changeLEDBool = true;
+            //create change LED color block
             let frame = CGRect(x: 15, y: 300, width: 200, height: 50)
             let changeColorBlock = LableObject(frame: frame)
             changeColorBlock.backgroundColor = UIColor.magenta
@@ -92,6 +97,7 @@ class DragDropViewController: UIViewController{
             self.view.addSubview(changeColorBlock)
         }
             
+        //if name of friend button is clicked
         else if theButton.titleLabel?.text == "Name of Friend"{
             nameOfFriendBool = true;
             let frame4 = CGRect(x: 115, y: 180, width: 200, height: 30)
@@ -122,7 +128,7 @@ class DragDropViewController: UIViewController{
     
         }
         
-        
+        //if "color" button is clicked
         else if theButton.titleLabel?.text == "Color"{
             colorBlockBool = true;
             let frameColor = CGRect(x: 25, y: 300, width: 250, height: 30)
@@ -140,7 +146,7 @@ class DragDropViewController: UIViewController{
                                  for: [UIControlEvents.touchDragExit,
                                        UIControlEvents.touchDragOutside])
             self.view.addSubview(changeColor)
-            var frameColorPicker = CGRect(x: 200, y: 150, width: 300, height: 200)
+            var frameColorPicker = CGRect(x: 0, y: 550, width: 100, height: 150)
             colorPicker = PickerView(frame:frameColorPicker)
             colorPicker.setPickerType(typeOfPicker: 1);
             colorPicker.isUserInteractionEnabled = true
