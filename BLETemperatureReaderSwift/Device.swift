@@ -51,9 +51,14 @@ struct Device {
     static let HumidityDataUUID = "F000AA21-0451-4000-B000-000000000000"
     static let HumidityConfig = "F000AA22-0451-4000-B000-000000000000"
     
+    //new IDs for Feather
+    static let baseID = "6E400001-B5A3-F393-­E0A9-­E50E24DCCA9E"
+    static let featherTX = "0x0002" //write
+    static let featherRX = "0x0003" //read
+    /*
     static let SensorDataIndexTempInfrared = 0
     static let SensorDataIndexTempAmbient = 1
     static let SensorDataIndexHumidityTemp = 0
-    static let SensorDataIndexHumidity = 1
+    static let SensorDataIndexHumidity = 1*/
     
 }

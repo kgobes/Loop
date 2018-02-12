@@ -83,6 +83,7 @@ class DragDropViewController: UIViewController{
             thenBlock.contentMode = .scaleAspectFit
             self.view.addSubview(ifNearBlock)
             self.view.addSubview(thenBlock)
+            
         }
             
         //if change LED color button is clicked
