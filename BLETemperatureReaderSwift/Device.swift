@@ -23,28 +23,11 @@ import Foundation
 struct Device {
     
     static let SensorTagAdvertisingUUID = "AA10"
-   /* ORIGINAL:
-    static let TemperatureServiceUUID = "F000AA00-0451-4000-B000-000000000000"
-    static let TemperatureDataUUID = "F000AA01-0451-4000-B000-000000000000"
-    static let TemperatureConfig = "F000AA02-0451-4000-B000-000000000000"
-
-    static let HumidityServiceUUID = "F000AA20-0451-4000-B000-000000000000"
-    static let HumidityDataUUID = "F000AA21-0451-4000-B000-000000000000"
-    static let HumidityConfig = "F000AA22-0451-4000-B000-000000000000"
-
-    static let SensorDataIndexTempInfrared = 0
-    static let SensorDataIndexTempAmbient = 1
-    static let SensorDataIndexHumidityTemp = 0
-    static let SensorDataIndexHumidity = 1
- */
-    
     /*COPIED and modified to test Flora*/
     
     static let TemperatureServiceUUID = "00771312-1100-0000-0000-ABBA0FA1AFE1" //first one in list from atcommand output
     
     static let TemperatureDataUUID = "00684201-1488-5977-4242-ABBA0FA1AFE1"//second one in list
-    //static let TemperatureDataUUID = "0x4201"
-    //static let TemperatureDataUUID = "0x1702a0180"
     static let TemperatureConfig =   "00694203-0077-1210-1342-ABBA0FA1AFE1" //third- maybe write?
     
     static let HumidityServiceUUID = "F000AA20-0451-4000-B000-000000000000"
@@ -52,13 +35,24 @@ struct Device {
     static let HumidityConfig = "F000AA22-0451-4000-B000-000000000000"
     
     //new IDs for Feather
-    static let baseID = "6E400001-B5A3-F393-­E0A9-­E50E24DCCA9E"
-    static let featherTX = "0x0002" //write
-    static let featherRX = "0x0003" //read
-    /*
-    static let SensorDataIndexTempInfrared = 0
-    static let SensorDataIndexTempAmbient = 1
-    static let SensorDataIndexHumidityTemp = 0
-    static let SensorDataIndexHumidity = 1*/
+    //second version
+    static let featherService1 = "00771312-1100-0000-0000-ABBA0FA1AFE1"
+    static let featherData1 = "00684201-1488-5977-4242-ABBA0FA1AFE1"
+    static let featherConfig1 = "00694203-0077-1210-1342-ABBA0FA1AFE1"
+    
+    static let featherService2 = "F000AA20-0451-4000-B000-000000000000"
+    static let featherData2 = "F000AA21-0451-4000-B000-000000000000"
+    static let featherConfig2 = "F000AA22-0451-4000-B000-000000000000"
+    
+    //new IDs for Feather
+    /*first version
+    static let uuidFeather1 = "00001530-1212-EFDE-1523-785FEABCD123"
+    static let uuidFeather2 = "6E400001-B5A3-F393-E0A9-E50E24DCCA9E"
+    static let uuidFeather3 = "EE0C2080-8786-40BA-AB96-99B91AC981D8"
+    
+    static let featherChar1 = "00001530-1212-EFDE-1523-785FEABCD123"
+    static let featherChar2 = "6E400001-B5A3-F393-E0A9-E50E24DCCA9E"
+    static let featherChar3 = "EE0C2080-8786-40BA-AB96-99B91AC981D8"*/
+    
     
 }

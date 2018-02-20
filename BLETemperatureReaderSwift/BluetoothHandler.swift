@@ -13,7 +13,7 @@ class BluetoothHandler: UIViewController, CBCentralManagerDelegate, CBPeripheral
     var visibleBackgroundIndex = 0
     var invisibleBackgroundIndex = 1
     var keepScanning = false
-    var enableValue:UInt8 = 2
+    var enableValue:UInt = 2
     //var enableValue:String = "2"
     var foundMyBracelet = false
     var foundFriendA = false;
@@ -270,8 +270,8 @@ class BluetoothHandler: UIViewController, CBCentralManagerDelegate, CBPeripheral
             for service in services {
                 print("Discovered service \(service)")
                 // If we found either the temperature or the humidity service, discover the characteristics for those services.
-                if (service.uuid == CBUUID(string: Device.TemperatureServiceUUID)) ||
-                    (service.uuid == CBUUID(string: Device.HumidityServiceUUID)) {
+                if (service.uuid == CBUUID(string: Device.featherService1) ||
+                    (service.uuid == CBUUID(string: Device.featherService2))){
                     print("MATCHED EXPECTED SERVICE UUID")
                     peripheral.discoverCharacteristics(nil, for: service)
                     
@@ -288,35 +288,51 @@ class BluetoothHandler: UIViewController, CBCentralManagerDelegate, CBPeripheral
         }
         if let characteristics = service.characteristics {
             print("in if for char")
-            let enableBytes = withUnsafePointer(to: &enableValue){ //did this to convert in xcode9
+            let enableBytes = withUnsafePointer(to: &enableValue){
                 return Data(bytes: $0, count: MemoryLayout<UInt8>.size)
             }
             print("enable Value:" )
             print(enableValue)
             for characteristic in characteristics {
-                print("checking characteristics")
-                // Matches UUID characteristic
-                if characteristic.uuid == CBUUID(string: Device.TemperatureDataUUID) {
-                    // Enable the IR Temperature Sensor notifications
-                    print("Matching characteristic ID")
-                    temperatureCharacteristic = characteristic
+               // print("checking characteristics")
+                print("found char: ");
+                print(characteristic.uuid);
+                //ONE
+                if characteristic.uuid == CBUUID(string: Device.featherData1) {
+                    print("Matched characteristic 1")
+                      temperatureCharacteristic = characteristic
+                  //  do I need this?
                     sensorTag?.setNotifyValue(true, for: characteristic)
                     print("after set notify value");
                 }
-                
-                // LED Configuration Characteristic
-                if characteristic.uuid == CBUUID(string: Device.TemperatureConfig) {
-                    // Enable IR Temperature Sensor
-                    print("Matching characteristic round 2")
+                if characteristic.uuid == CBUUID(string: Device.featherConfig1) {
+                    print("Matching characteristic 2")
                     sensorTag?.writeValue(enableBytes as Data, for: characteristic, type: .withResponse)
                     print("after send bytes");
                 }
+                //TWO
+                if characteristic.uuid == CBUUID(string: Device.featherData2) {
+                    print("Matched characteristic 1")
+                    //  do I need this?
+                    sensorTag?.setNotifyValue(true, for: characteristic)
+                    print("after set notify value");
+                }
+                if characteristic.uuid == CBUUID(string: Device.featherConfig2) {
+                    print("Matching characteristic 2")
+                    sensorTag?.writeValue(enableBytes as Data, for: characteristic, type: .withResponse)
+                    print("after send bytes");
+                }
+                /*if characteristic.uuid == CBUUID(string: Device.featherChar3) {
+                    print("Matching characteristic 3")
+                    sensorTag?.writeValue(enableBytes as Data, for: characteristic, type: .withResponse)
+                    print("after send bytes");
+                }*/
                 
             }
             
         }
     }
-    
+    //NOT CURRENTLY USED
     func peripheral(_ peripheral: CBPeripheral, didUpdateValueFor characteristic: CBCharacteristic, error: Error?) {
         if error != nil {
             print("ERROR ON UPDATING VALUE FOR CHARACTERISTIC: \(characteristic) - \(String(describing: error?.localizedDescription))")
@@ -373,18 +389,18 @@ class BluetoothHandler: UIViewController, CBCentralManagerDelegate, CBPeripheral
         }
     }
     func changeLEDtoRed(){
-        enableValue = 1//"FF0000" //orginally 1
+        enableValue = 100000//"FF0000" //orginally 1
         print("change color to 1")
         sensorTag?.discoverServices(nil)
         print("after discover services call")
     }
     func changeLEDtoGreen(){
-        enableValue = 3//"00FF00"
+        enableValue = 000011//"00FF00"
         print("change color to 3")
         sensorTag?.discoverServices(nil)
     }
     func changeLEDtoBlue(){
-        enableValue = 2//"0000FF"
+        enableValue = 001100//"0000FF"
         print("change color to 2")
         sensorTag?.discoverServices(nil)
     }
