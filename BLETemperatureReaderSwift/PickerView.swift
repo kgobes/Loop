@@ -32,7 +32,7 @@ class PickerView: UIPickerView, UIPickerViewDataSource, UIPickerViewDelegate {
             friendPicker = true;
         }
     }
-    let colors = ["red", "blue", "purple"]
+    let colors = ["red", "blue", "green", "rainbow"]
     let friends = ["Michelle", "Kelsie", "Vibhor", "Kira"]
     //let friends = BluetoothHandler.getFriends();
     

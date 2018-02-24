@@ -387,6 +387,15 @@ class BluetoothHandler: UIViewController, CBCentralManagerDelegate, CBPeripheral
         else if(color == "green"){
             changeLEDtoGreen();
         }
+        else if(color == "rainbow"){
+            changeLEDtoRainbow();
+        }
+    }
+    func changeLEDtoRainbow(){
+        enableValue = 111111
+        print("change to rainbow");
+        sensorTag?.discoverServices(nil)
+        print("after discover services call")
     }
     func changeLEDtoRed(){
         enableValue = 100000//"FF0000" //orginally 1
