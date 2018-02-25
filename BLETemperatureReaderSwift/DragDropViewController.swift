@@ -9,6 +9,7 @@
 import UIKit
 
 class DragDropViewController: UIViewController{
+    
     //bluetooth object for bracelet
     let bluetooth = BluetoothHandler()
     var ifNearBlock = LableObject();
@@ -19,7 +20,6 @@ class DragDropViewController: UIViewController{
     var changeColor = UIButton();
     var nameChangeClicked = false;
     var colorChangeClicked = false;
-    
     
     //BOOLEANS to test if blocks have been created yet
     var ifNearBool = false;
@@ -33,39 +33,22 @@ class DragDropViewController: UIViewController{
     var colorToChangeTo = "blue";
     var friendA = "DefaultFriend";
     
-    
     @IBOutlet weak var saveButton: UIButton!
-    
     @IBOutlet weak var nearFriendButton: UIButton!
     
-
-    @IBAction func saveButtonClicked(_ sender: Any) {
-        print("save button clicked");
-        
-        //checkConditions()
-        print(checkConditions())
-        print(colorToChangeTo);
-        
-        
-       // bluetooth.startManager()
-        bluetooth.updateLEDs(color: colorToChangeTo)
-        
-    }
-   
+    
     override func viewDidLoad() {
         bluetooth.startManager()
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
+    
+    
+    override func didReceiveMemoryWarning()
+    {super.didReceiveMemoryWarning()}
     
     
      @IBAction func objectAdded(theButton:UIButton){
+        
         //if near friend button is clicked
         if theButton.titleLabel?.text == "If Near... Then"{
             ifNearBool = true;
@@ -83,9 +66,7 @@ class DragDropViewController: UIViewController{
             thenBlock.contentMode = .scaleAspectFit
             self.view.addSubview(ifNearBlock)
             self.view.addSubview(thenBlock)
-            
         }
-            
         //if change LED color button is clicked
         else if theButton.titleLabel?.text == "Change LED color"{
             changeLEDBool = true;
@@ -97,7 +78,6 @@ class DragDropViewController: UIViewController{
             changeColorBlock.contentMode = .scaleAspectFit
             self.view.addSubview(changeColorBlock)
         }
-            
         //if name of friend button is clicked
         else if theButton.titleLabel?.text == "Name of Friend"{
             nameOfFriendBool = true;
@@ -126,9 +106,7 @@ class DragDropViewController: UIViewController{
             //self.view.addSubview(friendPicker)
             friendPicker.isUserInteractionEnabled = true
             friendPicker.contentMode = .scaleAspectFit
-    
         }
-        
         //if "color" button is clicked
         else if theButton.titleLabel?.text == "Color"{
             colorBlockBool = true;
@@ -153,8 +131,21 @@ class DragDropViewController: UIViewController{
             colorPicker.isUserInteractionEnabled = true
             colorPicker.contentMode = .scaleAspectFit
         }
-        
     }
+    
+    
+    @IBAction func saveButtonClicked(_ sender: Any) {
+        
+        print("save button clicked");
+        
+        //checkConditions()
+        print(checkConditions())
+        print(colorToChangeTo);
+        
+        // bluetooth.startManager()
+        bluetooth.updateLEDs(color: colorToChangeTo)
+    }
+    
     
     func pressedFriendButton(){
         print("in friend button method");
@@ -198,12 +189,16 @@ class DragDropViewController: UIViewController{
             colorChangeClicked = false;
         }
     }
+    
+    
     //override function to make button draggable
     func drag(control: UIControl, event: UIEvent) {
         if let center = event.allTouches?.first?.location(in: self.view) {
             control.center = center
         }
     }
+    
+    
     func checkConditions() -> Bool{
         if(colorChosenBool && friendChosenBool && ifNearBool && changeLEDBool && colorBlockBool && nameOfFriendBool){
             return true;
@@ -212,6 +207,8 @@ class DragDropViewController: UIViewController{
             return false;
         }
     }
+    
+    
     //color not updating here, not sure why yet
     func getStatus()-> String{
         print(colorToChangeTo);
@@ -219,5 +216,4 @@ class DragDropViewController: UIViewController{
     }
     
 //PICKER VIEW functions
-    
 }
