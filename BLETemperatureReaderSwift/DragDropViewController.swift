@@ -40,6 +40,10 @@ class DragDropViewController: UIViewController{
     override func viewDidLoad() {
         bluetooth.startManager()
         super.viewDidLoad()
+        
+        let swipeLeft = UISwipeGestureRecognizer(target: self, action: #selector(swipeAction(swipe:)))
+        swipeLeft.direction = UISwipeGestureRecognizerDirection.left
+        self.view.addGestureRecognizer(swipeLeft)
     }
     
     
@@ -215,5 +219,21 @@ class DragDropViewController: UIViewController{
         return colorToChangeTo;
     }
     
+    
+    func swipeAction(swipe: UISwipeGestureRecognizer)
+    {
+        switch swipe.direction
+        {
+        case UISwipeGestureRecognizerDirection.left:
+            performSegue(withIdentifier: "goRight", sender: self)
+            print("Seguing right")
+        default:
+            print("break statement")
+            break
+        }
+    }
+    
 //PICKER VIEW functions
 }
+
+

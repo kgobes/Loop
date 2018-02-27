@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		313A8E90204524C0003149A3 /* BlockListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 313A8E8F204524C0003149A3 /* BlockListViewController.swift */; };
 		32A6ACCF1FA031B3006E34FB /* SecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32A6ACCE1FA031B3006E34FB /* SecondViewController.swift */; };
 		32E5F29E1FDE3FE0007571EB /* DragDropViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32E5F29D1FDE3FE0007571EB /* DragDropViewController.swift */; };
 		32E5F2A61FDE5C83007571EB /* NameText.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32E5F2A51FDE5C83007571EB /* NameText.swift */; };
@@ -23,6 +24,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		313A8E8F204524C0003149A3 /* BlockListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlockListViewController.swift; sourceTree = "<group>"; };
 		32A6ACCE1FA031B3006E34FB /* SecondViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondViewController.swift; sourceTree = "<group>"; };
 		32E5F29D1FDE3FE0007571EB /* DragDropViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DragDropViewController.swift; sourceTree = "<group>"; };
 		32E5F2A51FDE5C83007571EB /* NameText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NameText.swift; sourceTree = "<group>"; };
@@ -73,8 +75,9 @@
 				C80679D51CB9C03A009BCB93 /* Device.swift */,
 				C80679BF1CB9B7ED009BCB93 /* AppDelegate.swift */,
 				C80679C31CB9B7ED009BCB93 /* Main.storyboard */,
-				4FDC355E1FE3950500C01A8B /* AddFriends.swift */,
+				313A8E8F204524C0003149A3 /* BlockListViewController.swift */,
 				32E5F29D1FDE3FE0007571EB /* DragDropViewController.swift */,
+				4FDC355E1FE3950500C01A8B /* AddFriends.swift */,
 				4FDC35561FE06D0B00C01A8B /* BluetoothHandler.swift */,
 				32E5F2AD1FDF2BDB007571EB /* ButtonObject.swift */,
 				32E5F2AB1FDF27A7007571EB /* LableObject.swift */,
@@ -182,6 +185,7 @@
 				32A6ACCF1FA031B3006E34FB /* SecondViewController.swift in Sources */,
 				4FDC355F1FE3950500C01A8B /* AddFriends.swift in Sources */,
 				32E5F29E1FDE3FE0007571EB /* DragDropViewController.swift in Sources */,
+				313A8E90204524C0003149A3 /* BlockListViewController.swift in Sources */,
 				4FFEB1261FDF0B4600207EBA /* PickerView.swift in Sources */,
 				C80679D61CB9C03A009BCB93 /* Device.swift in Sources */,
 				C80679C01CB9B7ED009BCB93 /* AppDelegate.swift in Sources */,
