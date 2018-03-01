@@ -50,9 +50,19 @@ class DragDropViewController: UIViewController{
     override func didReceiveMemoryWarning()
     {super.didReceiveMemoryWarning()}
     
+//    let transitionManager = TransitionManager()
+//    func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+//        print("brock here")
+//        // this gets a reference to the screen that we're about to transition to
+//        let toViewController = segue.destination as! UIViewController
+//        
+//        // instead of using the default transition animation, we'll ask
+//        // the segue to use our custom TransitionManager object to manage the transition animation
+//        toViewController.transitioningDelegate = self.transitionManager
+//        
+//    }
     
      @IBAction func objectAdded(theButton:UIButton){
-        
         //if near friend button is clicked
         if theButton.titleLabel?.text == "If Near... Then"{
             ifNearBool = true;
@@ -220,7 +230,7 @@ class DragDropViewController: UIViewController{
     }
     
     
-    func swipeAction(swipe: UISwipeGestureRecognizer)
+    @objc func swipeAction(swipe: UISwipeGestureRecognizer)
     {
         switch swipe.direction
         {
