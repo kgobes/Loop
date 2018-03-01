@@ -12,6 +12,10 @@ class BlockListViewController: UIViewController, UITableViewDelegate, UITableVie
 {
     @IBOutlet weak var blockListTableView: UITableView!
     
+    @IBAction func buttonClicked(_ sender: Any) {
+        print("button has been clicked")
+        self.dismiss(animated: true, completion: nil)
+    }
     //Array of BlockSections - a struct defined in BlockSection.swift
     var sections =
     [
@@ -29,13 +33,17 @@ class BlockListViewController: UIViewController, UITableViewDelegate, UITableVie
                      expanded: false)
     ]
 
-    override func viewDidLoad() {
+    
+    override func viewDidLoad()
+    {
         super.viewDidLoad()
         print("Reached BlockListViewController")
         
         let swipeRight = UISwipeGestureRecognizer(target: self, action: #selector(swipeAction(swipe:)))
         swipeRight.direction = UISwipeGestureRecognizerDirection.right
         self.view.addGestureRecognizer(swipeRight)
+        
+        self.blockListTableView.separatorStyle = .none
     }
 
     
@@ -56,28 +64,68 @@ class BlockListViewController: UIViewController, UITableViewDelegate, UITableVie
     }
     
     
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath)
+    {
+        let myDragDrop = DragDropViewController()
+        if indexPath.section == 0
+        {
+            DispatchQueue.main.async
+            {
+                //upon completion, I need to add the block to DragDropViewController
+                self.dismiss(animated: true, completion: {myDragDrop.objectAddedFromTable(tappedBlock: "If Near... Then")})
+                print("after dispatch")
+            }
+        }
+        else if indexPath.section == 1
+        {
+            DispatchQueue.main.async
+            {
+                self.dismiss(animated: true, completion: nil)
+                print("after dispatch")
+            }
+        }
+        else if indexPath.section == 2
+        {
+            DispatchQueue.main.async
+            {
+                self.dismiss(animated: true, completion: nil)
+                print("after dispatch")
+            }
+        }
+        else
+        {
+            DispatchQueue.main.async
+            {
+                self.dismiss(animated: true, completion: nil)
+                print("after dispatch")
+            }
+        }
+    }
+    
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return sections[section].blocks.count
     }
     
+    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "labelCell")!
-        cell.imageView?.image = sections[indexPath.section].blocks[indexPath.row]
+        let cell = tableView.dequeueReusableCell(withIdentifier: "labelCell") as! BlocksCellTableViewCell
+        cell.blockImage.image = sections[indexPath.section].blocks[indexPath.row]
         return cell
     }
+    
     
     func numberOfSections(in tableView: UITableView) -> Int
     {return sections.count}
     
     
-    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return 44
-    }
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat
+    {return 50}
     
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         if (sections[indexPath.section].expanded)
-        {return 44}
+        {return 50}
         else
         {return 0}
     }
@@ -94,7 +142,6 @@ class BlockListViewController: UIViewController, UITableViewDelegate, UITableVie
     }
     
     
-    
     func toggleSection(header: ExpandableHeaderView, section: Int)
     {
         sections[section].expanded = !sections[section].expanded
@@ -106,7 +153,4 @@ class BlockListViewController: UIViewController, UITableViewDelegate, UITableVie
         }
         blockListTableView.endUpdates()
     }
-    
-    
-    
 }

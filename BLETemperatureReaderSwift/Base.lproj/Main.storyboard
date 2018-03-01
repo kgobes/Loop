@@ -354,7 +354,7 @@
                     <connections>
                         <outlet property="nearFriendButton" destination="VcM-hT-hEy" id="Usx-L9-lpL"/>
                         <outlet property="saveButton" destination="Dx4-5M-0cX" id="g4F-Jm-RXE"/>
-                        <segue destination="EAt-26-131" kind="presentation" identifier="goRight" modalTransitionStyle="flipHorizontal" id="JjF-ig-tUm"/>
+                        <segue destination="EAt-26-131" kind="presentation" identifier="goRight" animates="NO" id="JjF-ig-tUm"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="TQf-jb-WwJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -385,7 +385,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                         </tableViewCellContentView>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="labelCell" textLabel="mOO-aY-ShX" style="IBUITableViewCellStyleDefault" id="Y4q-ZL-ohh">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="labelCell" textLabel="mOO-aY-ShX" style="IBUITableViewCellStyleDefault" id="Y4q-ZL-ohh" customClass="BlocksCellTableViewCell" customModule="BLETemperatureReaderSwift" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="72" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Y4q-ZL-ohh" id="naS-QA-f9z">
@@ -399,8 +399,15 @@
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ApS-rM-bgV">
+                                                    <rect key="frame" x="108" y="4" width="160" height="35"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                </imageView>
                                             </subviews>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="blockImage" destination="ApS-rM-bgV" id="aAi-U5-vb4"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                                 <connections>
@@ -417,18 +424,30 @@
                             <constraint firstItem="QRc-dc-Me2" firstAttribute="leading" secondItem="5k1-xn-OCu" secondAttribute="leading" id="vy1-rh-Fn0"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Blocks" id="QeQ-77-6or"/>
+                    <navigationItem key="navigationItem" title="Blocks" id="QeQ-77-6or">
+                        <barButtonItem key="leftBarButtonItem" style="plain" id="PFX-EL-YPY">
+                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="GWR-gk-Q0c">
+                                <rect key="frame" x="16" y="7" width="83" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button"/>
+                                <connections>
+                                    <action selector="buttonClicked:" destination="dR8-Nb-NbB" eventType="touchUpInside" id="F2q-zm-8Ne"/>
+                                </connections>
+                            </button>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="blockListTableView" destination="QRc-dc-Me2" id="p63-2f-CA0"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="31n-14-9wZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4188" y="446"/>
+            <point key="canvasLocation" x="4188" y="445.72713643178412"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="OSs-cX-HXT">
             <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="reY-FR-xRy" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="EAt-26-131" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="EXg-F8-360">
@@ -440,7 +459,6 @@
                         <segue destination="dR8-Nb-NbB" kind="relationship" relationship="rootViewController" id="dla-qG-Pg7"/>
                     </connections>
                 </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="reY-FR-xRy" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="3324.8000000000002" y="446.17691154422795"/>
         </scene>
