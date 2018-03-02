@@ -29,6 +29,7 @@
 		31E6956820479F00004CDD94 /* propertyGreen.png in Resources */ = {isa = PBXBuildFile; fileRef = 31E6955720479F00004CDD94 /* propertyGreen.png */; };
 		31E6956920479F00004CDD94 /* actionLEDs.png in Resources */ = {isa = PBXBuildFile; fileRef = 31E6955820479F00004CDD94 /* actionLEDs.png */; };
 		31E6956A20479F00004CDD94 /* propertyYellow.png in Resources */ = {isa = PBXBuildFile; fileRef = 31E6955920479F00004CDD94 /* propertyYellow.png */; };
+		31FC8D772048F8F300C11539 /* whiteCirclePNG.png in Resources */ = {isa = PBXBuildFile; fileRef = 31FC8D762048F8F200C11539 /* whiteCirclePNG.png */; };
 		32A6ACCF1FA031B3006E34FB /* SecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32A6ACCE1FA031B3006E34FB /* SecondViewController.swift */; };
 		32E5F29E1FDE3FE0007571EB /* DragDropViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32E5F29D1FDE3FE0007571EB /* DragDropViewController.swift */; };
 		32E5F2A61FDE5C83007571EB /* NameText.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32E5F2A51FDE5C83007571EB /* NameText.swift */; };
@@ -67,6 +68,7 @@
 		31E6955720479F00004CDD94 /* propertyGreen.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = propertyGreen.png; sourceTree = "<group>"; };
 		31E6955820479F00004CDD94 /* actionLEDs.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = actionLEDs.png; sourceTree = "<group>"; };
 		31E6955920479F00004CDD94 /* propertyYellow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = propertyYellow.png; sourceTree = "<group>"; };
+		31FC8D762048F8F200C11539 /* whiteCirclePNG.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = whiteCirclePNG.png; sourceTree = "<group>"; };
 		32A6ACCE1FA031B3006E34FB /* SecondViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondViewController.swift; sourceTree = "<group>"; };
 		32E5F29D1FDE3FE0007571EB /* DragDropViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DragDropViewController.swift; sourceTree = "<group>"; };
 		32E5F2A51FDE5C83007571EB /* NameText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NameText.swift; sourceTree = "<group>"; };
@@ -109,6 +111,7 @@
 		31E6954420479EE6004CDD94 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				31FC8D762048F8F200C11539 /* whiteCirclePNG.png */,
 				31E6954520479F00004CDD94 /* blocks_with_words */,
 			);
 			path = Images;
@@ -263,6 +266,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				31FC8D772048F8F300C11539 /* whiteCirclePNG.png in Resources */,
 				C80679CA1CB9B7ED009BCB93 /* LaunchScreen.storyboard in Resources */,
 				31E6956320479F00004CDD94 /* propertyKira.png in Resources */,
 				31E6956620479F00004CDD94 /* propertyRed.png in Resources */,

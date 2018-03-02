@@ -13,6 +13,7 @@ class BlocksCellTableViewCell: UITableViewCell
     
     @IBOutlet weak var blockImage: UIImageView!
     
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

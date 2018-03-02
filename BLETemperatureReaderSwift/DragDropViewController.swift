@@ -158,6 +158,7 @@ class DragDropViewController: UIViewController{
     func objectAddedFromTable(tappedBlock: String){
         //if near friend button is clicked
         if tappedBlock == "If Near... Then"{
+            print("PRINTED FROM OAFT")
             ifNearBool = true;
             //create ifnear and then block
             var frameIfNear = CGRect(x: 15, y: 180, width: 100, height: 50)
@@ -173,6 +174,7 @@ class DragDropViewController: UIViewController{
             thenBlock.contentMode = .scaleAspectFit
             self.view.addSubview(ifNearBlock)
             self.view.addSubview(thenBlock)
+            print("PRINTED AFTER ADD")
         }
             //if change LED color button is clicked
         else if tappedBlock == "Change LED color"{
