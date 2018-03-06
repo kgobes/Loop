@@ -12,7 +12,6 @@ class LableObject: UILabel {
     override init(frame: CGRect) {
         super.init(frame:frame)
         self.isUserInteractionEnabled = true
-        
     }
     
     required init?(coder aDecoder: NSCoder) {

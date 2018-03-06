@@ -40,17 +40,11 @@ class DragDropViewController: UIViewController{
     override func viewDidLoad() {
         bluetooth.startManager()
         super.viewDidLoad()
-        
-        let swipeLeft = UISwipeGestureRecognizer(target: self, action: #selector(swipeAction(swipe:)))
-        swipeLeft.direction = UISwipeGestureRecognizerDirection.left
-        self.view.addGestureRecognizer(swipeLeft)
-        
         print("DragDropViewController loaded")
     }
     
-    override func viewDidAppear(_ animated: Bool) {
-        print("DragDropViewController appeared")
-    }
+    override func viewDidAppear(_ animated: Bool)
+    {print("DragDropViewController appeared")}
     
     
     override func didReceiveMemoryWarning()
@@ -248,9 +242,9 @@ class DragDropViewController: UIViewController{
     
     
     
-    @IBAction func saveButtonClicked(_ sender: Any) {
-        
-        print("save button clicked");
+    @IBAction func uploadButtonClicked(_ sender: Any)
+    {
+        print("upload button clicked");
         
         //checkConditions()
         print(checkConditions())
@@ -258,6 +252,15 @@ class DragDropViewController: UIViewController{
         
         // bluetooth.startManager()
         bluetooth.updateLEDs(color: colorToChangeTo)
+    }
+    
+    
+    
+    @IBAction func openBlockListVC(_ sender: Any)
+    {
+        print("open blocklistVC")
+        performSegue(withIdentifier: "goRight", sender: self)
+        print("yabadoo")
     }
     
     
@@ -329,19 +332,6 @@ class DragDropViewController: UIViewController{
         return colorToChangeTo;
     }
     
-    
-    @objc func swipeAction(swipe: UISwipeGestureRecognizer)
-    {
-        switch swipe.direction
-        {
-        case UISwipeGestureRecognizerDirection.left:
-            performSegue(withIdentifier: "goRight", sender: self)
-            print("Seguing right")
-        default:
-            print("break statement")
-            break
-        }
-    }
     
 //PICKER VIEW functions
 }

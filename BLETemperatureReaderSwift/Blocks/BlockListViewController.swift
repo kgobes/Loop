@@ -10,6 +10,11 @@ import UIKit
 
 class BlockListViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, ExpandableHeaderViewDelegate
 {
+    var ifNearBlock = LableObject();
+    var thenBlock = LableObject();
+    var changeName = UIButton();
+    var friendPicker = PickerView();
+    
     @IBOutlet weak var blockListTableView: UITableView!
     
     @IBAction func buttonClicked(_ sender: Any) {
@@ -20,16 +25,16 @@ class BlockListViewController: UIViewController, UITableViewDelegate, UITableVie
     var sections =
     [
         BlockSection(blockTypes: "Triggers",
-                     blocks: [#imageLiteral(resourceName: "propertySam.png"), #imageLiteral(resourceName: "propertyMichelle.png"), #imageLiteral(resourceName: "controlNearFriend.png"), #imageLiteral(resourceName: "propertyKira.png"), #imageLiteral(resourceName: "propertyChris.png"), #imageLiteral(resourceName: "propertyVibhor.png")],
+                     blocks: [#imageLiteral(resourceName: "nearFriends.png")],
                      expanded: false),
         BlockSection(blockTypes: "Actions",
                      blocks: [#imageLiteral(resourceName: "actionVibrate.png"), #imageLiteral(resourceName: "actionLEDs.png")],
                      expanded: false),
         BlockSection(blockTypes: "Controls",
-                     blocks: [#imageLiteral(resourceName: "propertyRed.png"), #imageLiteral(resourceName: "propertyBlue.png")],
+                     blocks: [#imageLiteral(resourceName: "control.png")],
                      expanded: false),
         BlockSection(blockTypes: "Properties",
-                     blocks: [#imageLiteral(resourceName: "propertyGreen.png"), #imageLiteral(resourceName: "propertyGreen.png")],
+                     blocks: [#imageLiteral(resourceName: "property4Seconds.png"), #imageLiteral(resourceName: "property3Seconds.png"), #imageLiteral(resourceName: "property2Seconds.png"), #imageLiteral(resourceName: "property1Second.png"), #imageLiteral(resourceName: "propertyHalfSecond.png"), #imageLiteral(resourceName: "propertySam.png"), #imageLiteral(resourceName: "propertyMichelle.png"), #imageLiteral(resourceName: "propertyKira.png"), #imageLiteral(resourceName: "propertyChris.png"), #imageLiteral(resourceName: "propertyVibhor.png"), #imageLiteral(resourceName: "propertyRed.png"), #imageLiteral(resourceName: "propertyBlue.png"), #imageLiteral(resourceName: "propertyGreen.png"), #imageLiteral(resourceName: "propertyYellow.png")],
                      expanded: false)
     ]
 
@@ -66,13 +71,22 @@ class BlockListViewController: UIViewController, UITableViewDelegate, UITableVie
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath)
     {
-        let myDragDrop = DragDropViewController()
         if indexPath.section == 0
         {
             DispatchQueue.main.async
             {
-                //upon completion, I need to add the block to DragDropViewController
-                self.dismiss(animated: true, completion: {myDragDrop.objectAddedFromTable(tappedBlock: "If Near... Then")})
+                if let presenter = self.presentingViewController as? DragDropViewController
+                {
+                    presenter.ifNearBool = true;
+                    //create block
+                    var frameNearFriends = CGRect(x: 15, y: 180, width: 150, height: 30)
+                    let nearFriendsBlock = ImageViewObject(frame: frameNearFriends)
+//                    self.nearFriendsBlock.contentMode = .scaleAspectFit
+                    nearFriendsBlock.image = #imageLiteral(resourceName: "nearFriends.png")
+//                    self.nearFriendsBlock.backgroundColor = UIColor.blue
+                    presenter.view.addSubview(nearFriendsBlock)
+                }
+                self.dismiss(animated: true, completion: nil)
                 print("after dispatch")
             }
         }
@@ -80,7 +94,26 @@ class BlockListViewController: UIViewController, UITableViewDelegate, UITableVie
         {
             DispatchQueue.main.async
             {
-                self.dismiss(animated: true, completion: nil)
+                if let presenter = self.presentingViewController as? DragDropViewController
+                {
+                    presenter.changeLEDBool = true;
+                    //create change LED color block
+                    let actionFrame = CGRect(x: 15, y: 300, width: 225, height: 75)
+                    let actionsBlock = ImageViewObject(frame: actionFrame)
+                    
+                    if indexPath.row == 0
+                    {
+                        actionsBlock.image = #imageLiteral(resourceName: "actionVibrate.png")
+                    }
+                    else
+                    {
+                        actionsBlock.image = #imageLiteral(resourceName: "actionLEDs.png")
+                    }
+                    
+//                    changeColorBlock.contentMode = .scaleAspectFit
+                    presenter.view.addSubview(actionsBlock)
+                }
+                self.dismiss(animated: true, completion: {print("second section tapped")})
                 print("after dispatch")
             }
         }
@@ -88,6 +121,14 @@ class BlockListViewController: UIViewController, UITableViewDelegate, UITableVie
         {
             DispatchQueue.main.async
             {
+                if let presenter = self.presentingViewController as? DragDropViewController
+                {
+                    presenter.nameOfFriendBool = true;
+                    let controlFrame = CGRect(x: 115, y: 180, width: 300, height: 125)
+                    let controlBlock = ImageViewObject(frame: controlFrame)
+                    controlBlock.image = #imageLiteral(resourceName: "control.png")
+                    presenter.view.addSubview(controlBlock)
+                }
                 self.dismiss(animated: true, completion: nil)
                 print("after dispatch")
             }
@@ -96,6 +137,75 @@ class BlockListViewController: UIViewController, UITableViewDelegate, UITableVie
         {
             DispatchQueue.main.async
             {
+                if let presenter = self.presentingViewController as? DragDropViewController
+                {
+                    presenter.colorBlockBool = true;
+                    let propertyFrame = CGRect(x: 15, y: 300, width: 75, height: 25)
+                    let propertyBlock = ImageViewObject(frame: propertyFrame)
+                    
+                    if indexPath.row == 0
+                    {
+                        propertyBlock.image = #imageLiteral(resourceName: "property4Seconds.png")
+                    }
+                    else if indexPath.row == 1
+                    {
+                        propertyBlock.image = #imageLiteral(resourceName: "property3Seconds.png")
+                    }
+                    else if indexPath.row == 2
+                    {
+                        propertyBlock.image = #imageLiteral(resourceName: "property2Seconds.png")
+                    }
+                    else if indexPath.row == 3
+                    {
+                        propertyBlock.image = #imageLiteral(resourceName: "property1Second.png")
+                    }
+                    else if indexPath.row == 4
+                    {
+                        propertyBlock.image = #imageLiteral(resourceName: "propertyHalfSecond.png")
+                    }
+                    else if indexPath.row == 5
+                    {
+                        propertyBlock.image = #imageLiteral(resourceName: "propertySam.png")
+                    }
+                    else if indexPath.row == 6
+                    {
+                        propertyBlock.image = #imageLiteral(resourceName: "propertyMichelle.png")
+                    }
+                    else if indexPath.row == 7
+                    {
+                        propertyBlock.image = #imageLiteral(resourceName: "propertyKira.png")
+                    }
+                    else if indexPath.row == 8
+                    {
+                        propertyBlock.image = #imageLiteral(resourceName: "propertyChris.png")
+                    }
+                    else if indexPath.row == 9
+                    {
+                        propertyBlock.image = #imageLiteral(resourceName: "propertyVibhor.png")
+                    }
+                    else if indexPath.row == 10
+                    {
+                        propertyBlock.image = #imageLiteral(resourceName: "propertyRed.png")
+                    }
+                    else if indexPath.row == 11
+                    {
+                        propertyBlock.image = #imageLiteral(resourceName: "propertyBlue.png")
+                    }
+                    else if indexPath.row == 12
+                    {
+                        propertyBlock.image = #imageLiteral(resourceName: "propertyGreen.png")
+                    }
+                    else if indexPath.row == 13
+                    {
+                        propertyBlock.image = #imageLiteral(resourceName: "propertyYellow.png")
+                    }
+                    else
+                    {
+                        print("should not reach, just testing")
+                    }
+//                    changeColorBlock.contentMode = .scaleAspectFit
+                    presenter.view.addSubview(propertyBlock)
+                }
                 self.dismiss(animated: true, completion: nil)
                 print("after dispatch")
             }

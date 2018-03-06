@@ -286,18 +286,13 @@
                                                         </connections>
                                                     </button>
                                                 </barButtonItem>
-                                                <barButtonItem key="rightBarButtonItem" style="plain" id="jkc-rD-g2k">
-                                                    <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="Dx4-5M-0cX">
-                                                        <rect key="frame" x="308" y="7" width="51" height="30"/>
+                                                <barButtonItem key="rightBarButtonItem" style="plain" id="guk-wX-fDG">
+                                                    <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="6Mw-n6-Ehk">
+                                                        <rect key="frame" x="276" y="7" width="83" height="30"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                                        <color key="tintColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                                        <state key="normal" title="Save">
-                                                            <color key="titleColor" red="0.0019247203237499539" green="0.0018683073647437732" blue="0.001953125" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                            <color key="titleShadowColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                                        </state>
+                                                        <state key="normal" title="|||"/>
                                                         <connections>
-                                                            <action selector="saveButtonClicked:" destination="8UD-Yk-Jsg" eventType="touchDown" id="P8d-FV-oMa"/>
+                                                            <action selector="openBlockListVC:" destination="8UD-Yk-Jsg" eventType="touchUpInside" id="lew-9G-TID"/>
                                                         </connections>
                                                     </button>
                                                 </barButtonItem>
@@ -354,21 +349,24 @@
                                     <action selector="objectAddedWithTheButton:" destination="8UD-Yk-Jsg" eventType="touchUpInside" id="lPb-q3-rqv"/>
                                 </connections>
                             </button>
-                            <tabBar contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="V03-AE-E5d">
-                                <rect key="frame" x="0.0" y="618" width="375" height="49"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <items>
-                                    <tabBarItem title="Delete" id="K1P-43-yBU"/>
-                                    <tabBarItem title="Upload" id="PmA-gG-NMr"/>
-                                </items>
-                            </tabBar>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="P26-ZI-bJU">
+                                <rect key="frame" x="66" y="629" width="45" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Delete"/>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Olc-mK-N2p">
+                                <rect key="frame" x="265" y="629" width="50" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Upload"/>
+                                <connections>
+                                    <action selector="uploadButtonClicked:" destination="8UD-Yk-Jsg" eventType="touchUpInside" id="J6T-gT-um7"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </view>
                     <connections>
                         <outlet property="nearFriendButton" destination="VcM-hT-hEy" id="Usx-L9-lpL"/>
-                        <outlet property="saveButton" destination="Dx4-5M-0cX" id="g4F-Jm-RXE"/>
                         <segue destination="EAt-26-131" kind="presentation" identifier="goRight" animates="NO" id="JjF-ig-tUm"/>
                     </connections>
                 </viewController>
