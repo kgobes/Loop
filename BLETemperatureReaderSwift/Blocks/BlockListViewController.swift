@@ -79,7 +79,7 @@ class BlockListViewController: UIViewController, UITableViewDelegate, UITableVie
                 {
                     presenter.ifNearBool = true;
                     //create block
-                    var frameNearFriends = CGRect(x: 15, y: 180, width: 150, height: 30)
+                    var frameNearFriends = CGRect(x: 105, y: 155, width: 150, height: 30)
                     let nearFriendsBlock = ImageViewObject(frame: frameNearFriends)
 //                    self.nearFriendsBlock.contentMode = .scaleAspectFit
                     nearFriendsBlock.image = #imageLiteral(resourceName: "nearFriends.png")
@@ -98,7 +98,7 @@ class BlockListViewController: UIViewController, UITableViewDelegate, UITableVie
                 {
                     presenter.changeLEDBool = true;
                     //create change LED color block
-                    let actionFrame = CGRect(x: 15, y: 300, width: 225, height: 75)
+                    let actionFrame = CGRect(x: 58, y: 177, width: 225, height: 75)
                     let actionsBlock = ImageViewObject(frame: actionFrame)
                     
                     if indexPath.row == 0
@@ -124,7 +124,7 @@ class BlockListViewController: UIViewController, UITableViewDelegate, UITableVie
                 if let presenter = self.presentingViewController as? DragDropViewController
                 {
                     presenter.nameOfFriendBool = true;
-                    let controlFrame = CGRect(x: 115, y: 180, width: 300, height: 125)
+                    let controlFrame = CGRect(x: 40, y: 150, width: 300, height: 125)
                     let controlBlock = ImageViewObject(frame: controlFrame)
                     controlBlock.image = #imageLiteral(resourceName: "control.png")
                     presenter.view.addSubview(controlBlock)
@@ -140,71 +140,112 @@ class BlockListViewController: UIViewController, UITableViewDelegate, UITableVie
                 if let presenter = self.presentingViewController as? DragDropViewController
                 {
                     presenter.colorBlockBool = true;
-                    let propertyFrame = CGRect(x: 15, y: 300, width: 75, height: 25)
-                    let propertyBlock = ImageViewObject(frame: propertyFrame)
+//                    let propertyFrame = CGRect(x: 15, y: 300, width: 75, height: 25)
+//                    let propertyBlock = ImageViewObject(frame: propertyFrame)
                     
                     if indexPath.row == 0
                     {
-                        propertyBlock.image = #imageLiteral(resourceName: "property4Seconds.png")
+                        let propertyNumberFrame = CGRect(x: 179, y: 208, width: 75, height: 25)
+                        let propertyNumberBlock = ImageViewObject(frame: propertyNumberFrame)
+                        propertyNumberBlock.image = #imageLiteral(resourceName: "property4Seconds.png")
+                        presenter.view.addSubview(propertyNumberBlock)
                     }
                     else if indexPath.row == 1
                     {
-                        propertyBlock.image = #imageLiteral(resourceName: "property3Seconds.png")
+                        let propertyNumberFrame = CGRect(x: 179, y: 208, width: 75, height: 25)
+                        let propertyNumberBlock = ImageViewObject(frame: propertyNumberFrame)
+                        propertyNumberBlock.image = #imageLiteral(resourceName: "property3Seconds.png")
+                        presenter.view.addSubview(propertyNumberBlock)
                     }
                     else if indexPath.row == 2
                     {
-                        propertyBlock.image = #imageLiteral(resourceName: "property2Seconds.png")
+                        let propertyNumberFrame = CGRect(x: 179, y: 208, width: 75, height: 25)
+                        let propertyNumberBlock = ImageViewObject(frame: propertyNumberFrame)
+                        propertyNumberBlock.image = #imageLiteral(resourceName: "property2Seconds.png")
+                        presenter.view.addSubview(propertyNumberBlock)
                     }
                     else if indexPath.row == 3
                     {
-                        propertyBlock.image = #imageLiteral(resourceName: "property1Second.png")
+                        let propertyNumberFrame = CGRect(x: 179, y: 208, width: 75, height: 25)
+                        let propertyNumberBlock = ImageViewObject(frame: propertyNumberFrame)
+                        propertyNumberBlock.image = #imageLiteral(resourceName: "property1Second.png")
+                        presenter.view.addSubview(propertyNumberBlock)
                     }
                     else if indexPath.row == 4
                     {
-                        propertyBlock.image = #imageLiteral(resourceName: "propertyHalfSecond.png")
+                        let propertyNumberFrame = CGRect(x: 179, y: 208, width: 75, height: 25)
+                        let propertyNumberBlock = ImageViewObject(frame: propertyNumberFrame)
+                        propertyNumberBlock.image = #imageLiteral(resourceName: "propertyHalfSecond.png")
+                        presenter.view.addSubview(propertyNumberBlock)
                     }
                     else if indexPath.row == 5
                     {
-                        propertyBlock.image = #imageLiteral(resourceName: "propertySam.png")
+                        let propertyNameFrame = CGRect(x: 165, y: 159, width: 75, height: 25)
+                        let propertyNameBlock = ImageViewObject(frame: propertyNameFrame)
+                        propertyNameBlock.image = #imageLiteral(resourceName: "propertySam.png")
+                        presenter.view.addSubview(propertyNameBlock)
                     }
                     else if indexPath.row == 6
                     {
-                        propertyBlock.image = #imageLiteral(resourceName: "propertyMichelle.png")
+                        let propertyNameFrame = CGRect(x: 165, y: 159, width: 75, height: 25)
+                        let propertyNameBlock = ImageViewObject(frame: propertyNameFrame)
+                        propertyNameBlock.image = #imageLiteral(resourceName: "propertyMichelle.png")
+                        presenter.view.addSubview(propertyNameBlock)
                     }
                     else if indexPath.row == 7
                     {
-                        propertyBlock.image = #imageLiteral(resourceName: "propertyKira.png")
+                        let propertyNameFrame = CGRect(x: 165, y: 159, width: 75, height: 25)
+                        let propertyNameBlock = ImageViewObject(frame: propertyNameFrame)
+                        propertyNameBlock.image = #imageLiteral(resourceName: "propertyKira.png")
+                        presenter.view.addSubview(propertyNameBlock)
                     }
                     else if indexPath.row == 8
                     {
-                        propertyBlock.image = #imageLiteral(resourceName: "propertyChris.png")
+                        let propertyNameFrame = CGRect(x: 165, y: 159, width: 75, height: 25)
+                        let propertyNameBlock = ImageViewObject(frame: propertyNameFrame)
+                        propertyNameBlock.image = #imageLiteral(resourceName: "propertyChris.png")
+                        presenter.view.addSubview(propertyNameBlock)
                     }
                     else if indexPath.row == 9
                     {
-                        propertyBlock.image = #imageLiteral(resourceName: "propertyVibhor.png")
+                        let propertyNameFrame = CGRect(x: 165, y: 159, width: 75, height: 25)
+                        let propertyNameBlock = ImageViewObject(frame: propertyNameFrame)
+                        propertyNameBlock.image = #imageLiteral(resourceName: "propertyVibhor.png")
+                        presenter.view.addSubview(propertyNameBlock)
                     }
                     else if indexPath.row == 10
                     {
-                        propertyBlock.image = #imageLiteral(resourceName: "propertyRed.png")
+                        let propertyColorFrame = CGRect(x: 179, y: 208, width: 75, height: 25)
+                        let propertyColorBlock = ImageViewObject(frame: propertyColorFrame)
+                        propertyColorBlock.image = #imageLiteral(resourceName: "propertyRed.png")
+                        presenter.view.addSubview(propertyColorBlock)
                     }
                     else if indexPath.row == 11
                     {
-                        propertyBlock.image = #imageLiteral(resourceName: "propertyBlue.png")
+                        let propertyColorFrame = CGRect(x: 179, y: 208, width: 75, height: 25)
+                        let propertyColorBlock = ImageViewObject(frame: propertyColorFrame)
+                        propertyColorBlock.image = #imageLiteral(resourceName: "propertyBlue.png")
+                        presenter.view.addSubview(propertyColorBlock)
                     }
                     else if indexPath.row == 12
                     {
-                        propertyBlock.image = #imageLiteral(resourceName: "propertyGreen.png")
+                        let propertyColorFrame = CGRect(x: 179, y: 208, width: 75, height: 25)
+                        let propertyColorBlock = ImageViewObject(frame: propertyColorFrame)
+                        propertyColorBlock.image = #imageLiteral(resourceName: "propertyGreen.png")
+                        presenter.view.addSubview(propertyColorBlock)
                     }
                     else if indexPath.row == 13
                     {
-                        propertyBlock.image = #imageLiteral(resourceName: "propertyYellow.png")
+                        let propertyColorFrame = CGRect(x: 179, y: 208, width: 75, height: 25)
+                        let propertyColorBlock = ImageViewObject(frame: propertyColorFrame)
+                        propertyColorBlock.image = #imageLiteral(resourceName: "propertyYellow.png")
+                        presenter.view.addSubview(propertyColorBlock)
                     }
                     else
                     {
                         print("should not reach, just testing")
                     }
 //                    changeColorBlock.contentMode = .scaleAspectFit
-                    presenter.view.addSubview(propertyBlock)
                 }
                 self.dismiss(animated: true, completion: nil)
                 print("after dispatch")

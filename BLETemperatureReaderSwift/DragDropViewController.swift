@@ -21,6 +21,8 @@ class DragDropViewController: UIViewController{
     var nameChangeClicked = false;
     var colorChangeClicked = false;
     
+    var testingControlBlock = ImageViewObject(frame: CGRect(x: 20, y: 0, width: 0, height: 0));
+    
     //BOOLEANS to test if blocks have been created yet
     var ifNearBool = false;
     var changeLEDBool = false;
@@ -41,6 +43,7 @@ class DragDropViewController: UIViewController{
         bluetooth.startManager()
         super.viewDidLoad()
         print("DragDropViewController loaded")
+        printXCoordinate()
     }
     
     override func viewDidAppear(_ animated: Bool)
@@ -50,17 +53,10 @@ class DragDropViewController: UIViewController{
     override func didReceiveMemoryWarning()
     {super.didReceiveMemoryWarning()}
     
-//    let transitionManager = TransitionManager()
-//    func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-//        print("brock here")
-//        // this gets a reference to the screen that we're about to transition to
-//        let toViewController = segue.destination as! UIViewController
-//        
-//        // instead of using the default transition animation, we'll ask
-//        // the segue to use our custom TransitionManager object to manage the transition animation
-//        toViewController.transitioningDelegate = self.transitionManager
-//        
-//    }
+    func printXCoordinate()
+    {
+        print(testingControlBlock.frame.origin.x)
+    }
     
      @IBAction func objectAdded(theButton:UIButton){
         //if near friend button is clicked
