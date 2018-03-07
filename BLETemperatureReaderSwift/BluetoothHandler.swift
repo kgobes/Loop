@@ -81,6 +81,7 @@ class BluetoothHandler: UIViewController, CBCentralManagerDelegate, CBPeripheral
     func startManager(){
         centralManager = CBCentralManager(delegate: self, queue: nil)
     }
+    
     func disconnect() {
         if let sensorTag = self.sensorTag {
             if let tc = self.temperatureCharacteristic {

@@ -29,7 +29,10 @@ class DragDropViewController: UIViewController{
     var nameOfFriendBool = false;
     var friendChosenBool = false;
     var colorBlockBool = false;
+    
+    //currently in use 3/7
     var colorChosenBool = false;
+    var actionLEDchosen = false;
     
     //important values to send to code
     var colorToChangeTo = "blue";
@@ -242,12 +245,16 @@ class DragDropViewController: UIViewController{
     {
         print("upload button clicked");
         
-        //checkConditions()
-        print(checkConditions())
+         print(checkConditions())
+         //checkConditions()
+       
         print(colorToChangeTo);
         
         // bluetooth.startManager()
-        bluetooth.updateLEDs(color: colorToChangeTo)
+        if(checkConditions()){
+            print("going to update LEDs...");
+            bluetooth.updateLEDs(color: colorToChangeTo)
+        }
     }
     
     
@@ -313,12 +320,23 @@ class DragDropViewController: UIViewController{
     
     
     func checkConditions() -> Bool{
-        if(colorChosenBool && friendChosenBool && ifNearBool && changeLEDBool && colorBlockBool && nameOfFriendBool){
+        if(colorChosenBool && actionLEDchosen){
+            print("valid conditions met for changing LED");
             return true;
         }
         else{
             return false;
         }
+        
+        
+        /*Original version:
+         
+         if(colorChosenBool && friendChosenBool && ifNearBool && changeLEDBool && colorBlockBool && nameOfFriendBool){
+            return true;
+        }
+        else{
+            return false;
+        }*/
     }
     
     

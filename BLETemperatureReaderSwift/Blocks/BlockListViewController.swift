@@ -87,7 +87,7 @@ class BlockListViewController: UIViewController, UITableViewDelegate, UITableVie
                     presenter.view.addSubview(nearFriendsBlock)
                 }
                 self.dismiss(animated: true, completion: nil)
-                print("after dispatch")
+                print("after dispatch: trigger block")
             }
         }
         else if indexPath.section == 1
@@ -108,13 +108,15 @@ class BlockListViewController: UIViewController, UITableViewDelegate, UITableVie
                     else
                     {
                         actionsBlock.image = #imageLiteral(resourceName: "actionLEDs.png")
+                        print("action LED chosen");
+                        presenter.actionLEDchosen = true;
                     }
                     
 //                    changeColorBlock.contentMode = .scaleAspectFit
                     presenter.view.addSubview(actionsBlock)
                 }
                 self.dismiss(animated: true, completion: {print("second section tapped")})
-                print("after dispatch")
+                print("after dispatch: action block")
             }
         }
         else if indexPath.section == 2
@@ -130,7 +132,7 @@ class BlockListViewController: UIViewController, UITableViewDelegate, UITableVie
                     presenter.view.addSubview(controlBlock)
                 }
                 self.dismiss(animated: true, completion: nil)
-                print("after dispatch")
+                print("after dispatch: control block")
             }
         }
         else
@@ -219,6 +221,8 @@ class BlockListViewController: UIViewController, UITableViewDelegate, UITableVie
                         let propertyColorBlock = ImageViewObject(frame: propertyColorFrame)
                         propertyColorBlock.image = #imageLiteral(resourceName: "propertyRed.png")
                         presenter.view.addSubview(propertyColorBlock)
+                        presenter.colorChosenBool = true;
+                        presenter.colorToChangeTo = "red"
                     }
                     else if indexPath.row == 11
                     {
@@ -226,6 +230,8 @@ class BlockListViewController: UIViewController, UITableViewDelegate, UITableVie
                         let propertyColorBlock = ImageViewObject(frame: propertyColorFrame)
                         propertyColorBlock.image = #imageLiteral(resourceName: "propertyBlue.png")
                         presenter.view.addSubview(propertyColorBlock)
+                        presenter.colorChosenBool = true;
+                        presenter.colorToChangeTo = "blue"
                     }
                     else if indexPath.row == 12
                     {
@@ -233,6 +239,8 @@ class BlockListViewController: UIViewController, UITableViewDelegate, UITableVie
                         let propertyColorBlock = ImageViewObject(frame: propertyColorFrame)
                         propertyColorBlock.image = #imageLiteral(resourceName: "propertyGreen.png")
                         presenter.view.addSubview(propertyColorBlock)
+                        presenter.colorChosenBool = true;
+                        presenter.colorToChangeTo = "green"
                     }
                     else if indexPath.row == 13
                     {
@@ -240,6 +248,8 @@ class BlockListViewController: UIViewController, UITableViewDelegate, UITableVie
                         let propertyColorBlock = ImageViewObject(frame: propertyColorFrame)
                         propertyColorBlock.image = #imageLiteral(resourceName: "propertyYellow.png")
                         presenter.view.addSubview(propertyColorBlock)
+                        presenter.colorChosenBool = true;
+                        presenter.colorToChangeTo = "yellow"
                     }
                     else
                     {
@@ -248,7 +258,11 @@ class BlockListViewController: UIViewController, UITableViewDelegate, UITableVie
 //                    changeColorBlock.contentMode = .scaleAspectFit
                 }
                 self.dismiss(animated: true, completion: nil)
-                print("after dispatch")
+                
+               // presenter?.setColorPropertyCond()
+           
+                //setColorPropertyCond(<#T##DragDropViewController#>);
+                print("after dispatch: property block")
             }
         }
     }
