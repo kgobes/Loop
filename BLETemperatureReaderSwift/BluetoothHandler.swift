@@ -213,10 +213,11 @@ class BluetoothHandler: UIViewController, CBCentralManagerDelegate, CBPeripheral
                     centralManager.connect(sensorTag!, options: nil)
                 }
             }
-            else if peripheralName == "Adafruit Bluefruit LE CE34" && foundMyBracelet && !foundFriendA { //find another bracelet after the first one
-                print("found trinket")
+                //method that detects for a friend if we are looking for one
+            else if peripheralName == "Adafruit Bluefruit LE" && foundMyBracelet && !foundFriendA { //find another bracelet after the first one
+                print("found a friend!")
                 foundFriendA = true
-                nearTrinket()
+                nearFriend()
             }
         }
     }
@@ -414,13 +415,13 @@ class BluetoothHandler: UIViewController, CBCentralManagerDelegate, CBPeripheral
         print("change color to 2")
         sensorTag?.discoverServices(nil)
     }
-    func nearTrinket(){
-        enableValue = 4//"4"
+    func nearFriend(){
+        enableValue = 111111
         print("going to change color for detected friend")
         sensorTag?.discoverServices(nil)
     }
     func nearFriendAdded(color: String){
-        nearTrinket();
+       // nearFriend();
         print(color)
     }
     //functions for adding friend

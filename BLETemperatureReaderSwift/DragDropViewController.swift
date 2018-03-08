@@ -33,6 +33,10 @@ class DragDropViewController: UIViewController{
     //currently in use 3/7
     var colorChosenBool = false;
     var actionLEDchosen = false;
+    var controlBlock = false;
+    var friendChosen = false;
+    var nearFriendBlock = false;
+    var lookForFriend = false;
     
     //important values to send to code
     var colorToChangeTo = "blue";
@@ -251,7 +255,12 @@ class DragDropViewController: UIViewController{
         print(colorToChangeTo);
         
         // bluetooth.startManager()
-        if(checkConditions()){
+        if(checkConditions() && lookForFriend){
+            bluetooth.keepScanning = true;
+            bluetooth.centralManager.scanForPeripherals(withServices: nil, options: nil)
+            bluetooth.resumeScan()
+        }
+        else if(checkConditions()){
             print("going to update LEDs...");
             bluetooth.updateLEDs(color: colorToChangeTo)
         }
@@ -320,7 +329,14 @@ class DragDropViewController: UIViewController{
     
     
     func checkConditions() -> Bool{
-        if(colorChosenBool && actionLEDchosen){
+        if(colorChosenBool && actionLEDchosen && controlBlock && friendChosen && nearFriendBlock){
+            print("conditions for find friend met");
+            lookForFriend = true;
+            //bluetooth.centralManager.scanForPeripherals(withServices: nil, options: nil)
+            //set variable
+            return true;
+        }
+        else if(colorChosenBool && actionLEDchosen){
             print("valid conditions met for changing LED");
             return true;
         }

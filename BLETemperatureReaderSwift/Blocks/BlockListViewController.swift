@@ -85,6 +85,7 @@ class BlockListViewController: UIViewController, UITableViewDelegate, UITableVie
                     nearFriendsBlock.image = #imageLiteral(resourceName: "nearFriends.png")
 //                    self.nearFriendsBlock.backgroundColor = UIColor.blue
                     presenter.view.addSubview(nearFriendsBlock)
+                    presenter.nearFriendBlock = true;
                 }
                 self.dismiss(animated: true, completion: nil)
                 print("after dispatch: trigger block")
@@ -130,6 +131,7 @@ class BlockListViewController: UIViewController, UITableViewDelegate, UITableVie
                     let controlBlock = ImageViewObject(frame: controlFrame)
                     controlBlock.image = #imageLiteral(resourceName: "control.png")
                     presenter.view.addSubview(controlBlock)
+                    presenter.controlBlock = true;
                 }
                 self.dismiss(animated: true, completion: nil)
                 print("after dispatch: control block")
@@ -145,75 +147,80 @@ class BlockListViewController: UIViewController, UITableViewDelegate, UITableVie
 //                    let propertyFrame = CGRect(x: 15, y: 300, width: 75, height: 25)
 //                    let propertyBlock = ImageViewObject(frame: propertyFrame)
                     
-                    if indexPath.row == 0
+                    if indexPath.row == 0 //4
                     {
                         let propertyNumberFrame = CGRect(x: 179, y: 208, width: 75, height: 25)
                         let propertyNumberBlock = ImageViewObject(frame: propertyNumberFrame)
                         propertyNumberBlock.image = #imageLiteral(resourceName: "property4Seconds.png")
                         presenter.view.addSubview(propertyNumberBlock)
                     }
-                    else if indexPath.row == 1
+                    else if indexPath.row == 1 //3
                     {
                         let propertyNumberFrame = CGRect(x: 179, y: 208, width: 75, height: 25)
                         let propertyNumberBlock = ImageViewObject(frame: propertyNumberFrame)
                         propertyNumberBlock.image = #imageLiteral(resourceName: "property3Seconds.png")
                         presenter.view.addSubview(propertyNumberBlock)
                     }
-                    else if indexPath.row == 2
+                    else if indexPath.row == 2 //2
                     {
                         let propertyNumberFrame = CGRect(x: 179, y: 208, width: 75, height: 25)
                         let propertyNumberBlock = ImageViewObject(frame: propertyNumberFrame)
                         propertyNumberBlock.image = #imageLiteral(resourceName: "property2Seconds.png")
                         presenter.view.addSubview(propertyNumberBlock)
                     }
-                    else if indexPath.row == 3
+                    else if indexPath.row == 3 //1
                     {
                         let propertyNumberFrame = CGRect(x: 179, y: 208, width: 75, height: 25)
                         let propertyNumberBlock = ImageViewObject(frame: propertyNumberFrame)
                         propertyNumberBlock.image = #imageLiteral(resourceName: "property1Second.png")
                         presenter.view.addSubview(propertyNumberBlock)
                     }
-                    else if indexPath.row == 4
+                    else if indexPath.row == 4 //0.5
                     {
                         let propertyNumberFrame = CGRect(x: 179, y: 208, width: 75, height: 25)
                         let propertyNumberBlock = ImageViewObject(frame: propertyNumberFrame)
                         propertyNumberBlock.image = #imageLiteral(resourceName: "propertyHalfSecond.png")
                         presenter.view.addSubview(propertyNumberBlock)
                     }
-                    else if indexPath.row == 5
+                    else if indexPath.row == 5 //Sam
                     {
                         let propertyNameFrame = CGRect(x: 165, y: 159, width: 75, height: 25)
                         let propertyNameBlock = ImageViewObject(frame: propertyNameFrame)
                         propertyNameBlock.image = #imageLiteral(resourceName: "propertySam.png")
                         presenter.view.addSubview(propertyNameBlock)
+                           presenter.friendChosen = true;
                     }
-                    else if indexPath.row == 6
+                    else if indexPath.row == 6 //Michelle
                     {
                         let propertyNameFrame = CGRect(x: 165, y: 159, width: 75, height: 25)
                         let propertyNameBlock = ImageViewObject(frame: propertyNameFrame)
                         propertyNameBlock.image = #imageLiteral(resourceName: "propertyMichelle.png")
                         presenter.view.addSubview(propertyNameBlock)
+                       presenter.friendChosen = true;
                     }
-                    else if indexPath.row == 7
+                    else if indexPath.row == 7 //Kira
                     {
                         let propertyNameFrame = CGRect(x: 165, y: 159, width: 75, height: 25)
                         let propertyNameBlock = ImageViewObject(frame: propertyNameFrame)
                         propertyNameBlock.image = #imageLiteral(resourceName: "propertyKira.png")
                         presenter.view.addSubview(propertyNameBlock)
+                          presenter.friendChosen = true;
                     }
-                    else if indexPath.row == 8
+                    else if indexPath.row == 8 //Chris
                     {
                         let propertyNameFrame = CGRect(x: 165, y: 159, width: 75, height: 25)
                         let propertyNameBlock = ImageViewObject(frame: propertyNameFrame)
                         propertyNameBlock.image = #imageLiteral(resourceName: "propertyChris.png")
                         presenter.view.addSubview(propertyNameBlock)
+                          presenter.friendChosen = true;
                     }
-                    else if indexPath.row == 9
+                    else if indexPath.row == 9 //Vibhor
                     {
                         let propertyNameFrame = CGRect(x: 165, y: 159, width: 75, height: 25)
                         let propertyNameBlock = ImageViewObject(frame: propertyNameFrame)
                         propertyNameBlock.image = #imageLiteral(resourceName: "propertyVibhor.png")
                         presenter.view.addSubview(propertyNameBlock)
+                        presenter.friendChosen = true;
                     }
                     else if indexPath.row == 10
                     {
@@ -249,7 +256,7 @@ class BlockListViewController: UIViewController, UITableViewDelegate, UITableVie
                         propertyColorBlock.image = #imageLiteral(resourceName: "propertyYellow.png")
                         presenter.view.addSubview(propertyColorBlock)
                         presenter.colorChosenBool = true;
-                        presenter.colorToChangeTo = "yellow"
+                        presenter.colorToChangeTo = "rainbow"
                     }
                     else
                     {
