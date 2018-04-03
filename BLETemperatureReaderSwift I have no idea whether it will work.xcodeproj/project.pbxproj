@@ -241,7 +241,6 @@
 				TargetAttributes = {
 					C80679BB1CB9B7ED009BCB93 = {
 						CreatedOnToolsVersion = 7.3;
-						DevelopmentTeam = 47Q5JN7XR6;
 						LastSwiftMigration = 0920;
 					};
 				};
@@ -461,7 +460,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = 47Q5JN7XR6;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = BLETemperatureReaderSwift/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = io.cloudcity.loop;
@@ -475,7 +474,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = 47Q5JN7XR6;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = BLETemperatureReaderSwift/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = io.cloudcity.loop;
