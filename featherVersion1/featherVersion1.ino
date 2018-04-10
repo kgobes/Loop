@@ -30,6 +30,7 @@ String currentColorValue = "FF-FF-FF";
 
 Adafruit_NeoPixel pixels = Adafruit_NeoPixel(60, PIN, NEO_GRB + NEO_KHZ800);
 
+int motorPin = 12; //vibrating motor
 
 int redVal = 255;
 int greenVal = 255;
@@ -61,7 +62,7 @@ void setup() {
   // End of trinket special code
 
   pixels.begin(); // This initializes the NeoPixel library.
-
+  pinMode(motorPin, OUTPUT); 
   for(int i; i<6;i++)
       {
         Serial.println("in initial for loop");
@@ -93,11 +94,20 @@ void setup() {
  // ble.setInterCharWriteDelay(5); // 5 ms
  
   Serial.println();
-  setPixelColor();
+  //setPixelColor();
+  //rainbowCycle(20);
+  /*for(int i; i<6;i++)
+      {
+        pixels.setPixelColor(i, pixels.Color(0,255,0));
+        pixels.setBrightness(50);
+        pixels.show();
+        delay(delayval);
+      }*/
   
-}
+}Z
 
 void loop() {
+
   bool hasChanged = false;
  
   //check writable characteristic for a new color
@@ -116,11 +126,12 @@ void loop() {
   Serial.println(buffer);
 
 //COMPARE buffer to options
-  if(buffer == "01-FF-00"){
-    //green
+  if(buffer == "A0-FF-00"){
+   // hasChanged = true;
     for(int i=0;i<6;i++){
     // pixels.Color takes RGB values, from 0,0,0 up to 255,255,255
     pixels.setPixelColor(i, pixels.Color(255,0,0)); // Moderately bright green color.
+    pixels.setBrightness(50);
     pixels.show(); // This sends the updated pixel color to the hardware.
     delay(delayval); // Delay for a period of time (in milliseconds).
   }
@@ -146,10 +157,12 @@ void loop() {
   }
   //put option 2 code in here
   if(buffer == "4C-FF-00"){
+   // hasChanged = true;
      //green
     for(int i=0;i<6;i++){
     // pixels.Color takes RGB values, from 0,0,0 up to 255,255,255
     pixels.setPixelColor(i, pixels.Color(0,0,255)); // Moderately bright green color.
+    pixels.setBrightness(50);
     pixels.show(); // This sends the updated pixel color to the hardware.
     delay(delayval); // Delay for a period of time (in milliseconds).
   }
@@ -168,19 +181,18 @@ void loop() {
       redVal = strtoul(red,NULL,16);
       greenVal = strtoul(green, NULL, 16);
       blueVal = strtoul(blue,NULL,16);
-      setPixelColor();
-
-     
-  
+      setPixelColor();  
   }
 
   
   //put option 3 code in here
-  if(buffer == ""){
+  if(buffer == "0B-FF-00"){
+    //hasChanged = true;
     //colorWipe(pixels.Color(0, 0, 0), 20);
     for(int i; i<6;i++)
       {
         pixels.setPixelColor(i, pixels.Color(0,255,0));
+        pixels.setBrightness(50);
         pixels.show();
         delay(delayval);
       }
@@ -206,12 +218,18 @@ void loop() {
   
   
   }
+  if(buffer == "07-FF-00"){ //rainbow code
+    //hasChanged = true;
+   rainbowCycle(20);
+  }
   
  if(buffer == "4"){
+   // hasChanged = true;
     Serial.println("trinket detected");
     for(int i; i<6;i++)
       {
         pixels.setPixelColor(i, pixels.Color(0,255,0));
+        pixels.setBrightness(50);
         pixels.show();
         delay(delayval);
       }
@@ -232,6 +250,7 @@ void loop() {
       blueValFlash = strtoul(blue,NULL,16);
       //setPixelColorFlash();
   }
+  
   ble.waitForOK();
   
   if(hasChanged){
@@ -253,6 +272,7 @@ void loop() {
       error(F("Failed to get response from readable property update"));
     }
   }
+  
   delay(1000);
 }
 
@@ -260,6 +280,30 @@ void loop() {
 void setPixelColor() {
 //  Pixel.setPixelColor(0,Pixel.Color(redVal, greenVal, blueVal));
   //Pixel.show();
+}
+void rainbowCycle(uint8_t wait) {
+  uint16_t i, j;
+
+  for(j=0; j<256*5; j++) { // 5 cycles of all colors on wheel
+    for(i=0; i< pixels.numPixels(); i++) {
+      pixels.setPixelColor(i, Wheel(((i * 256 / pixels.numPixels()) + j) & 255));
+      pixels.setBrightness(50);
+    }
+    pixels.show();
+    delay(wait);
+  }
+}
+uint32_t Wheel(byte WheelPos) {
+  WheelPos = 255 - WheelPos;
+  if(WheelPos < 85) {
+    return pixels.Color(255 - WheelPos * 3, 0, WheelPos * 3);
+  }
+  if(WheelPos < 170) {
+    WheelPos -= 85;
+    return pixels.Color(0, WheelPos * 3, 255 - WheelPos * 3);
+  }
+  WheelPos -= 170;
+  return pixels.Color(WheelPos * 3, 255 - WheelPos * 3, 0);
 }
 /*
 void setPixelColorFlash(){ //flash new color twice, going back to original color values
@@ -288,34 +332,15 @@ void colorWipe(uint32_t c, uint8_t wait) {
       delay(wait);
   }
 }
-/*
-void flashRandom(int wait, uint8_t howmany) {
- randomSeed(analogRead(0));
-  for(uint16_t i=0; i<howmany; i++) {
-    // get a random pixel from the list
-    int j = random(6);
-    
-    // now we will 'fade' it in 5 steps
-    for (int x=0; x < 5; x++) {
-      int r = red * (x+1); r /= 5;
-      int g = green * (x+1); g /= 5;
-      int b = blue * (x+1); b /= 5;
-      
-      pixels.setPixelColor(j, pixels.Color(r, g, b));
-      pixels.show();
-    }
-    // & fade out in 5 steps
-    for (int x=5; x >= 0; x--) {
-      int r = red * x; r /= 5;
-      int g = green * x; g /= 5;
-      int b = blue * x; b /= 5;
-      
-      pixels.setPixelColor(j, pixels.Color(r, g, b));
-      pixels.show();
-    
-    }
-  }
-  // LEDs will be off when done (they are faded to 0)
-}*/
+
+void vibrate(){ //vibrate on then off again
+  int onTime = 2500;  //the number of milliseconds for the motor to turn on for
+  int offTime = 1000; //the number of milliseconds for the motor to turn off for
+ 
+  digitalWrite(motorPin, HIGH); // turns the motor On
+  delay(onTime);                // waits for onTime milliseconds
+  digitalWrite(motorPin, LOW);  // turns the motor Off
+  delay(offTime);               // waits for offTime milliseconds
+}
 
 
