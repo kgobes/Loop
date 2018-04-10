@@ -192,11 +192,12 @@ class BluetoothHandler: UIViewController, CBCentralManagerDelegate, CBPeripheral
      
      */
     func centralManager(_ central: CBCentralManager, didDiscover peripheral: CBPeripheral, advertisementData: [String : Any], rssi RSSI: NSNumber) {
+        //print("in scanning method, will print peripherals")
         // Retrieve the peripheral name from the advertisement data using the "kCBAdvDataLocalName" key
         if let peripheralName = advertisementData[CBAdvertisementDataLocalNameKey] as? String {
             print("NEXT PERIPHERAL NAME: \(peripheralName)")
             print("NEXT PERIPHERAL UUID: \(peripheral.identifier.uuidString)")
-            if !foundMyBracelet{ //no bracelet found yet, the one we have found is users
+            if !foundMyBracelet{ //no bracelet found yet
                 if peripheralName == sensorTagName {
                     foundMyBracelet = true
                     //pauseScan()
@@ -214,7 +215,7 @@ class BluetoothHandler: UIViewController, CBCentralManagerDelegate, CBPeripheral
                 }
             }
                 //method that detects for a friend if we are looking for one
-            else if peripheralName == "Adafruit Bluefruit LE" && foundMyBracelet && !foundFriendA { //find another bracelet after the first one
+            else if peripheralName == "Bluefruit52" && foundMyBracelet && !foundFriendA { //find another bracelet after the first one
                 print("found a friend!")
                 foundFriendA = true
                 nearFriend()

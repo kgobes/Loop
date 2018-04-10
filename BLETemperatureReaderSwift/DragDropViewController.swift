@@ -254,11 +254,12 @@ class DragDropViewController: UIViewController{
        
         print(colorToChangeTo);
         
-        // bluetooth.startManager()
+    
         if(checkConditions() && lookForFriend){
             bluetooth.keepScanning = true;
             bluetooth.centralManager.scanForPeripherals(withServices: nil, options: nil)
-            bluetooth.resumeScan()
+            //bluetooth.startManager()
+            //bluetooth.resumeScan()
         }
         else if(checkConditions()){
             print("going to update LEDs...");
