@@ -10,6 +10,7 @@ import UIKit
 
 class OnboardingVC: UIViewController {
 
+    @IBOutlet weak var nameTextField: UITextField!
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -21,15 +22,10 @@ class OnboardingVC: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    @IBAction func continueTouched(_ sender: UIButton) {
+        UserDefaults.standard.set(nameTextField.text, forKey: "name")
+        performSegue(withIdentifier: "toMainSegue", sender: self)
     }
-    */
+    
 
 }

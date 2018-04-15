@@ -9,9 +9,21 @@ import UIKit
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
-
+    //show the onboarding screen just once: from tutorial: https://www.youtube.com/watch?v=MQuzfjsQcHI
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+        self.window = UIWindow(frame: UIScreen.main.bounds)
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let vc: UIViewController
+        if(UserDefaults.standard.value(forKey: "name") as? String) == nil {
+            //show the onboarding screen
+            vc = storyboard.instantiateViewController(withIdentifier: "OnboardingVC")
+        }else{
+            //show the main screen
+            vc = storyboard.instantiateInitialViewController()!
+        }
+        self.window?.rootViewController = vc
+        self.window?.makeKeyAndVisible()
         return true
     }
 
