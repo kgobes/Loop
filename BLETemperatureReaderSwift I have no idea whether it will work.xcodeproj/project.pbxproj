@@ -31,6 +31,8 @@
 		3183781A204DF39200BBCA7D /* actionLEDs.png in Resources */ = {isa = PBXBuildFile; fileRef = 31837808204DEC1100BBCA7D /* actionLEDs.png */; };
 		3183781B204DF39400BBCA7D /* propertyYellow.png in Resources */ = {isa = PBXBuildFile; fileRef = 31837809204DEC1100BBCA7D /* propertyYellow.png */; };
 		3183781D204E025900BBCA7D /* ImageViewObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3183781C204E025900BBCA7D /* ImageViewObject.swift */; };
+		3299FC142082DE63004080AA /* OnboardingVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3299FC132082DE63004080AA /* OnboardingVC.swift */; };
+		3299FC16208320BE004080AA /* FirstScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3299FC15208320BD004080AA /* FirstScreen.swift */; };
 		32A6ACCF1FA031B3006E34FB /* SecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32A6ACCE1FA031B3006E34FB /* SecondViewController.swift */; };
 		32E5F29E1FDE3FE0007571EB /* DragDropViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32E5F29D1FDE3FE0007571EB /* DragDropViewController.swift */; };
 		32E5F2A61FDE5C83007571EB /* NameText.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32E5F2A51FDE5C83007571EB /* NameText.swift */; };
@@ -71,6 +73,8 @@
 		31837808204DEC1100BBCA7D /* actionLEDs.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = actionLEDs.png; sourceTree = "<group>"; };
 		31837809204DEC1100BBCA7D /* propertyYellow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = propertyYellow.png; sourceTree = "<group>"; };
 		3183781C204E025900BBCA7D /* ImageViewObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageViewObject.swift; sourceTree = "<group>"; };
+		3299FC132082DE63004080AA /* OnboardingVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingVC.swift; sourceTree = "<group>"; };
+		3299FC15208320BD004080AA /* FirstScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstScreen.swift; sourceTree = "<group>"; };
 		32A6ACCE1FA031B3006E34FB /* SecondViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondViewController.swift; sourceTree = "<group>"; };
 		32E5F29D1FDE3FE0007571EB /* DragDropViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DragDropViewController.swift; sourceTree = "<group>"; };
 		32E5F2A51FDE5C83007571EB /* NameText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NameText.swift; sourceTree = "<group>"; };
@@ -190,12 +194,14 @@
 				31E6954420479EE6004CDD94 /* Images */,
 				C80679D51CB9C03A009BCB93 /* Device.swift */,
 				C80679BF1CB9B7ED009BCB93 /* AppDelegate.swift */,
+				3299FC15208320BD004080AA /* FirstScreen.swift */,
 				C80679C31CB9B7ED009BCB93 /* Main.storyboard */,
 				313A8E912045BA46003149A3 /* TransitionManager.swift */,
 				32E5F29D1FDE3FE0007571EB /* DragDropViewController.swift */,
 				4FDC355E1FE3950500C01A8B /* AddFriends.swift */,
 				4FDC35561FE06D0B00C01A8B /* BluetoothHandler.swift */,
 				32E5F2AD1FDF2BDB007571EB /* ButtonObject.swift */,
+				3299FC132082DE63004080AA /* OnboardingVC.swift */,
 				32E5F2AB1FDF27A7007571EB /* LableObject.swift */,
 				3183781C204E025900BBCA7D /* ImageViewObject.swift */,
 				4FFEB1251FDF0B4600207EBA /* PickerView.swift */,
@@ -324,6 +330,8 @@
 				32A6ACCF1FA031B3006E34FB /* SecondViewController.swift in Sources */,
 				3183781D204E025900BBCA7D /* ImageViewObject.swift in Sources */,
 				4FDC355F1FE3950500C01A8B /* AddFriends.swift in Sources */,
+				3299FC142082DE63004080AA /* OnboardingVC.swift in Sources */,
+				3299FC16208320BE004080AA /* FirstScreen.swift in Sources */,
 				32E5F29E1FDE3FE0007571EB /* DragDropViewController.swift in Sources */,
 				313A8E90204524C0003149A3 /* BlockListViewController.swift in Sources */,
 				4FFEB1261FDF0B4600207EBA /* PickerView.swift in Sources */,
