@@ -15,13 +15,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         self.window = UIWindow(frame: UIScreen.main.bounds)
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let vc: UIViewController
-//        if(UserDefaults.standard.value(forKey: "name") as? String) == nil {
+        if(UserDefaults.standard.value(forKey: "name") as? String) == nil {
             //show the onboarding screen
             vc = storyboard.instantiateViewController(withIdentifier: "Onboarding0")
-//        }else{
+        }else{
             //show the main screen
-//            vc = storyboard.instantiateInitialViewController()!
-//        }
+            vc = storyboard.instantiateInitialViewController()!
+        }
         self.window?.rootViewController = vc
         self.window?.makeKeyAndVisible()
         return true
